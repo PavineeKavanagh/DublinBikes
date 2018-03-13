@@ -29,6 +29,8 @@ def main():
                station_status,station_contract_name,station_total_bike_stands,station_available_bike_stands,\
                station_available_bikes,station_data_LUD) "
                    "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s)")
+    
+    print("Adding Values")
 
     # Generating the key for the database
     max_key = ("SELECT max(station_id) from jcdecaux_dublin_bikes_stations_dump")
@@ -41,7 +43,7 @@ def main():
         key = 1     # ------------------------------ What if there is no data in the table
     else:           
         key = key+1 # ------------------------------ setting the new key
-    
+    print("Key: ",key)
     # Getting the values from the json response from JCD
     for station in stations:
         station_number = station['number']
@@ -64,12 +66,12 @@ def main():
         # Tuple holding the values
         data_station = (key, station_number, station_name, station_address, station_pos_lat, station_pos_lon, station_banking, station_bonus,
                         station_status, station_contract_name, station_total_bike_stands, station_available_bike_stands, station_available_bikes, station_data_LUD)
-
+        print("Inserting: ",data_station)
         # Executing the query
         cursor.execute(add_station,data_station)
         key+=1 # ------------ Get the next key
 
-    cursor.commit() # ---------------------- Commiting the changes since InnoDB
+    cnx.commit() # ---------------------- Commiting the changes since InnoDB
     cnx.close()     # ---------------------- Close the connection
 
 if __name__=="__main__":
