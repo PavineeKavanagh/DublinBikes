@@ -1,5 +1,6 @@
 # Downloads data from JCDeacaux and loads it into Mysql database
 
+from mysql.connector import errorcode
 import mysql.connector
 import requests
 import json
@@ -16,10 +17,33 @@ def main():
     }
 
     # Getting json response fro JCDecaux
-    response = requests.get(
-        'https://api.jcdecaux.com/vls/v1/stations?contract=Dublin&apiKey=72ad8bb012e2e3c42c7d2c9665b3b9f875d03bac')
+    url = 'https://api.jcdecaux.com/vls/v1/stations?contract=Dublin&apiKey='
+    apiKey = '72ad8bb012e2e3c42c7d2c9665b3b9f875d03bac'
+    apiurl = url+apiKey
+    
+    try:
+        response = requests.get(apiurl, timeout = 3)
+        response.raise_for_status()
+    except requests.exceptions.HTTPError as errh:
+        print("Http Error:", errh)
+    except requests.exceptions.ConnectionError as errc:
+        print("Error Connecting:", errc)
+    except requests.exceptions.Timeout as errt:
+        print("Timeout Error:", errt)
+    except requests.exceptions.RequestException as reqErr:
+        print("Fatal Error: ",reqErr)
+    
 
-    cnx = mysql.connector.connect(**config) # ------------------------- Connecting to RDS
+    try:
+        cnx = mysql.connector.connect(**config) # ------------------------- Connecting to RDS
+    except mysql.connector.Error as err:
+        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+            print("Something is wrong with your user name or password")
+        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+            print("Database does not exist")
+        else:
+            print(err)
+    
     cursor = cnx.cursor()                   # ------------------------- Cursor to execute all the queries
     stations = json.loads(response.text)    # ------------------------- Loading JSON Data
 
@@ -34,7 +58,11 @@ def main():
 
     # Generating the key for the database
     max_key = ("SELECT max(station_id) from jcdecaux_dublin_bikes_stations_dump")
-    cursor.execute(max_key) # ---------------------- Execute the query on the database
+    try:
+        cursor.execute(max_key) # ---------------------- Execute the query on the database
+    except mysql.connector.Error as err:
+        print("Something went wrong: {}".format(err))
+    
 
     key = 0 # -------------------------------------- Holder for the key value
     for i in cursor:
@@ -68,7 +96,11 @@ def main():
                         station_status, station_contract_name, station_total_bike_stands, station_available_bike_stands, station_available_bikes, station_data_LUD)
         # print("Inserting: ",data_station)
         # Executing the query
-        cursor.execute(add_station,data_station)
+        try:
+            cursor.execute(add_station, data_station)
+        except mysql.connector.Error as err:
+            print("Something went wrong: {}".format(err))
+        
         key+=1 # ------------ Get the next key
 
     cnx.commit() # ---------------------- Commiting the changes since InnoDB
