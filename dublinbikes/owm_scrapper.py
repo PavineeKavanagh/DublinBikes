@@ -35,10 +35,9 @@ def main():
     max_key = ("SELECT max(weather_id) from openweathermap_dublin_bikes_dump")
     cursor.execute(max_key) # ---------------------- Execute the query on the database
 
-    key = 0  # -------------------------------------- Holder for the key value
+    key = 0  # ------------------------------------- Holder for the key value
     for i in cursor:
-        # ------------------------------- cursor returns a tuple as (max,) so to get the first element we say i[0] --> max
-        key = i[0]
+        key = i[0] # ------------------------------- cursor returns a tuple as (max,) so to get the first element we say i[0] --> max
     if key == None:
         key = 1     # ------------------------------ What if there is no data in the table
     else:
@@ -61,15 +60,15 @@ def main():
         weather_clouds_all = weather['clouds']['all']
         weather_wind_speed = weather['wind']['speed']
         weather_wind_deg = weather['wind']['deg']
-        if 'rain' in weather:
-            if '3h' in weather['rain']:
+        if 'rain' in weather: # -------------------------------- If the key 'rain' does not exist (If it doesn't rain)
+            if '3h' in weather['rain']: # ---------------------- If key 'rain' exists but key '3h' doesnt exist (if it doesn't rain in past 3 hours)
                 weather_rain = weather['rain']['3h']
             else:
                 weather_rain = 0
         else:
             weather_rain = 0
-        if 'snow' in weather:
-            if '3h' in weather['snow']:
+        if 'snow' in weather: # -------------------------------- If the key 'snow' does not exist (If it doesn't snow)
+            if '3h' in weather['snow']: # ---------------------- If key 'snow' exists but key '3h' doesnt exist (if it doesn't snow in past 3 hours)
                 weather_snow = weather['snow']['3h']
             else:
                 weather_snow = 0
