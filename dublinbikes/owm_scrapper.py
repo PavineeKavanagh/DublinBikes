@@ -16,11 +16,36 @@ def main():
         'raise_on_warnings': True,
     }
 
-    #Getting json response from OWM
-    response = requests.get(
-        'http://api.openweathermap.org/data/2.5/forecast?id=7778677&mode=json&units=metric&APPID=26025aec9fb58721adba291f0f3291f2')
+    url = 'http://api.openweathermap.org/data/2.5/forecast?' # -------------------- API Url
+    cityId = '7778677' # ---------------------------------------------------------- ID of the city in the OWM
+    dataMode = 'json' # ----------------------------------------------------------- Mode of the data
+    units = 'metric' # ------------------------------------------------------------ What units the data is expected
+    apiKey = '26025aec9fb58721adba291f0f3291f2' # --------------------------------- API Key
+    apiurl = url+'id='+cityId+'&mode='+dataMode+'&units='+units+'&APPID='+apiKey #- Final API URL
 
-    cnx = mysql.connector.connect(**config) # ------------------------- Connecting to RDS
+    #Getting json response from OWM
+    try:
+        response = requests.get(apiurl, timeout=3)
+        response.raise_for_status()
+    except requests.exceptions.HTTPError as errh:
+        print("Http Error:", errh)
+    except requests.exceptions.ConnectionError as errc:
+        print("Error Connecting:", errc)
+    except requests.exceptions.Timeout as errt:
+        print("Timeout Error:", errt)
+    except requests.exceptions.RequestException as reqErr:
+        print("Fatal Error: ", reqErr)
+
+     try:
+        cnx = mysql.connector.connect(**config) # ------------------------- Connecting to RDS
+    except mysql.connector.Error as err:
+        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+            print("Something is wrong with your user name or password")
+        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+            print("Database does not exist")
+        else:
+            print(err)
+
     cursor = cnx.cursor()                   # ------------------------- Cursor to execute all the queries
     weathers = json.loads(response.text)    # ------------------------- Loading JSON Data
 
@@ -33,7 +58,10 @@ def main():
                    "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s,%s,%s,%s,%s,%s,%s)")
     # Generating the key for the database
     max_key = ("SELECT max(weather_id) from openweathermap_dublin_bikes_dump")
-    cursor.execute(max_key) # ---------------------- Execute the query on the database
+    try:
+        cursor.execute(max_key) # ---------------------- Execute the query on the database
+    except mysql.connector.Error as err:
+        print("Could Not get Maximum Key Something went wrong: {}".format(err))
 
     key = 0  # ------------------------------------- Holder for the key value
     for i in cursor:
@@ -41,7 +69,7 @@ def main():
     if key == None:
         key = 1     # ------------------------------ What if there is no data in the table
     else:
-        key = key+1  # ------------------------------ setting the new key
+        key = key+1  # ----------------------------- setting the new key
     # print(key)
     for weather in weathers['list']:
         weather_date = time.strftime(
@@ -80,7 +108,10 @@ def main():
         data_weathers = (key, weather_date, weather_main_temp, weather_main_temp_min, weather_main_temp_max, weather_main_pressure, weather_main_sea_level,weather_main_grnd_level, weather_main_humidity,
                         weather_main_temp_kf, weather_weather_id, weather_weather_main, weather_weather_des, weather_clouds_all, weather_wind_speed, weather_wind_deg, weather_snow, weather_rain, weather_sys_pod, weather_sys_dt_txt)
         # print("Inserting: ",data_weathers)
-        cursor.execute(add_weathers,data_weathers)
+        try:
+            cursor.execute(add_weathers,data_weathers) # ---------------------- Execute the query on the database
+        except mysql.connector.Error as err:
+            print("Could Not Insert new rows Something went wrong: {}".format(err))
         key += 1
     cnx.commit()
     cnx.close()

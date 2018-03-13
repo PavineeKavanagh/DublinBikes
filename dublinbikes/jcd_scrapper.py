@@ -61,7 +61,7 @@ def main():
     try:
         cursor.execute(max_key) # ---------------------- Execute the query on the database
     except mysql.connector.Error as err:
-        print("Something went wrong: {}".format(err))
+        print("Could Not get Maximum Key Something went wrong: {}".format(err))
     
 
     key = 0 # -------------------------------------- Holder for the key value
