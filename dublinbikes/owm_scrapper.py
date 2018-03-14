@@ -36,7 +36,7 @@ def main():
     except requests.exceptions.RequestException as reqErr:
         print("Fatal Error: ", reqErr)
 
-     try:
+    try:
         cnx = mysql.connector.connect(**config) # ------------------------- Connecting to RDS
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
