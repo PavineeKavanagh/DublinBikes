@@ -2,6 +2,11 @@
 
 import jcd_scrapper
 import time
+import app
+from flask import Flask, render_template
+
+
+
 """Main module."""
 def main():
     """ Controls the major elements of the program"""
@@ -10,6 +15,9 @@ def main():
     jcd_scrapper.main()
     time.sleep(305)
 
-if __name__=="__main__":
-    main()
-
+@app.route('/')
+def index():
+    returnDict = {}
+    returnDict['user'] = 'Elena'
+    returnDict['title'] = 'Dublin Bikes'
+    return 'Index Page!'
