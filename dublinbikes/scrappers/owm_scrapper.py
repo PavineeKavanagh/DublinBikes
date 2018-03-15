@@ -1,9 +1,11 @@
 # Downloads data from Openweathermap and loads it into Mysql database
 
+from mysql.connector import errorcode
 import mysql.connector
 import requests
 import json
 import time
+import datetime
 
 
 def main():
@@ -88,8 +90,7 @@ def main():
         key = key+1  # ----------------------------- setting the new key
     # print(key)
     for weather in weathers['list']:
-        weather_date = time.strftime(
-            "%Y-%m-%d %H:%M:%S", time.gmtime(weather['dt'] / 1000.0))
+        weather_date = datetime.datetime.fromtimestamp(int(weather['dt'])).strftime('%Y-%m-%d %H:%M:%S')
         weather_main_temp = weather['main']['temp']
         weather_main_temp_min = weather['main']['temp_min']
         weather_main_temp_max = weather['main']['temp_max']
