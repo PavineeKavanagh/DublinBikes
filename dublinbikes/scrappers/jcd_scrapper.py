@@ -53,6 +53,22 @@ def main():
                station_status,station_contract_name,station_total_bike_stands,station_available_bike_stands,\
                station_available_bikes,station_data_LUD) "
                    "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s)")
+
+    # Truncating the live data table - This table will be refreshed with the most recent data
+    truncate_live_station = ("TRUNCATE TABLE jcdecaux_live_data")
+
+    try:
+        cursor.execute(truncate_live_station) # -------- Executing the query on the database
+        cnx.commit() # ------------------------------ Commit because the database is a Innodb
+    except mysql.connector.Error as err:
+        print("Could not truncate jcd live table, Check db: {}".format(err))
+
+    # Insert live data inside the jcd Live table
+    add_live_station = ("INSERT INTO jcdecaux_live_data "
+                   "(station_id,station_number,station_banking,station_bonus,\
+               station_status,station_contract_name,station_total_bike_stands,station_available_bike_stands,\
+               station_available_bikes,station_data_LUD) "
+                   "VALUES (%s, %s, %s, %s, %s, %s, %s, %s,%s,%s)")
     
     # print("Adding Values")
 
@@ -63,7 +79,7 @@ def main():
     except mysql.connector.Error as err:
         print("Could Not get Maximum Key Something went wrong: {}".format(err))
     
-
+    lKey = 1
     key = 0 # -------------------------------------- Holder for the key value
     for i in cursor:
         key = i[0] # ------------------------------- cursor returns a tuple as (max,) so to get the first element we say i[0] --> max
@@ -94,17 +110,25 @@ def main():
         # Tuple holding the values
         data_station = (key, station_number, station_name, station_address, station_pos_lat, station_pos_lon, station_banking, station_bonus,
                         station_status, station_contract_name, station_total_bike_stands, station_available_bike_stands, station_available_bikes, station_data_LUD)
-        # print("Inserting: ",data_station)
+        data_live_station = (lKey, station_number, station_banking, station_bonus, station_status, station_contract_name, station_total_bike_stands, station_available_bike_stands, station_available_bikes, station_data_LUD)
+
+        try:
+            cursor.execute(add_live_station, data_live_station)
+        except mysql.connector.Error as err:
+            print("Something went wrong in inserting live data: {}".format(err))
+        print(data_live_station)
+        print("Inserting: ",data_station)
         # Executing the query
         try:
             cursor.execute(add_station, data_station)
         except mysql.connector.Error as err:
-            print("Something went wrong: {}".format(err))
+            print("Something went wrong in inserting the dump: {}".format(err))
         
         key+=1 # ------------ Get the next key
+        lKey+=1 # ----------- Get the next key
 
     cnx.commit() # ---------------------- Commiting the changes since InnoDB
-    cnx.close()     # ---------------------- Close the connection
+    cnx.close()  # ---------------------- Close the connection
 
 if __name__=="__main__":
     main()

@@ -7,7 +7,7 @@ def main():
     returnDict = {}
     returnDict['user'] = 'Elena'
     returnDict['title'] = 'Dublin Bikes'
-    return 'Index Page!'
+    return render_template("index.html", **returnDict)
 
 @app.route('/stationmap')
 def stationmap():

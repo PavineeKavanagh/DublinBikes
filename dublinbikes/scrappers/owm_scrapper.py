@@ -56,13 +56,29 @@ def main():
                     weather_weather_main, weather_weather_des, weather_clouds_all, weather_wind_speed, weather_wind_deg, weather_snow,\
                      weather_rain, weather_sys_pod, weather_sys_dt_txt) "
                    "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s,%s,%s,%s,%s,%s,%s)")
+
+    # Insert live data into live data holding table
+    add_live_weather = ("INSERT INTO owm_live_data"
+                   "(weather_id, weather_main_temp, weather_main_temp_min, weather_main_temp_max,\
+                    weather_weather_main, weather_weather_des, weather_clouds_all, weather_wind_speed, weather_wind_deg, weather_snow,\
+                     weather_rain, weather_sys_dt_txt) "
+                   "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
+
+    # Truncating live weather table
+    truncate_live_weather = ("TRUNCATE TABLE owm_live_data")
+    try:
+        cursor.execute(truncate_live_weather) # ---------------------- Execute the query on the database
+        cnx.commit()
+    except mysql.connector.Error as err:
+        print("Could Not truncate live weather table, Something went wrong: {}".format(err))
+
     # Generating the key for the database
     max_key = ("SELECT max(weather_id) from openweathermap_dublin_bikes_dump")
     try:
         cursor.execute(max_key) # ---------------------- Execute the query on the database
     except mysql.connector.Error as err:
         print("Could Not get Maximum Key Something went wrong: {}".format(err))
-
+    lKey = 1
     key = 0  # ------------------------------------- Holder for the key value
     for i in cursor:
         key = i[0] # ------------------------------- cursor returns a tuple as (max,) so to get the first element we say i[0] --> max
@@ -107,12 +123,22 @@ def main():
 
         data_weathers = (key, weather_date, weather_main_temp, weather_main_temp_min, weather_main_temp_max, weather_main_pressure, weather_main_sea_level,weather_main_grnd_level, weather_main_humidity,
                         weather_main_temp_kf, weather_weather_id, weather_weather_main, weather_weather_des, weather_clouds_all, weather_wind_speed, weather_wind_deg, weather_snow, weather_rain, weather_sys_pod, weather_sys_dt_txt)
-        # print("Inserting: ",data_weathers)
+        
+        data_live_weathers = (lKey, weather_main_temp, weather_main_temp_min, weather_main_temp_max, weather_weather_main, weather_weather_des, weather_clouds_all, weather_wind_speed, weather_wind_deg, weather_snow, weather_rain, weather_sys_dt_txt)
+        
+        # print("Inserting: ", data_weathers) 
         try:
             cursor.execute(add_weathers,data_weathers) # ---------------------- Execute the query on the database
         except mysql.connector.Error as err:
+            print("Could Not Insert new rows in the dump table Something went wrong: {}".format(err))
+        try:
+            cursor.execute(add_live_weather,data_live_weathers) # ---------------------- Execute the query on the database
+        except mysql.connector.Error as err:
             print("Could Not Insert new rows Something went wrong: {}".format(err))
+        
         key += 1
+        lKey += 1
+
     cnx.commit()
     cnx.close()
 
