@@ -116,8 +116,8 @@ def main():
             cursor.execute(add_live_station, data_live_station)
         except mysql.connector.Error as err:
             print("Something went wrong in inserting live data: {}".format(err))
-        # print(data_live_station)
-        # print("Inserting: ",data_station)
+        print(data_live_station)
+        print("Inserting: ",data_station)
         # Executing the query
         try:
             cursor.execute(add_station, data_station)
