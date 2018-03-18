@@ -4,7 +4,7 @@
 
 from flask import Flask # ------------------------- import Flask class
 app = Flask(__name__) # --------------------------- create instance of this class 'app' (name or main?)
-from dublinbikes import flaskdb
+from dublinbikes import dublinbikes
 
 
 __author__ = """Harsh Gupta"""

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>{{ title }} - station map</title>
-    <script src="{{url_for('static', filename='javascript.js')}}"></script>
+    <!-- <script src="{{url_for('static', filename='javascript.js')}}"></script> -->
 </head>
 
 <body>
@@ -12,7 +12,7 @@
     <h2>Here is the map:
     </h2>
     <h3>{{ map }}</h3>
-    <div id="map"></div>
+    <div id="initMap"></div>
     <!-- Replace the value of the key parameter with your own API key. -->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-QM6kmMT69XX3uQsuhP260P7dUvZ3M2I&callback=initMap">
     </script>

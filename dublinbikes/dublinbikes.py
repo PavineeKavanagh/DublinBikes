@@ -1,13 +1,13 @@
-# -*- coding: utf-8 -*-
+from flask import Flask
+from dublinbikes.Stations import Station
+import Stations
+from dublinbikes import app
 
-import jcd_scrapper
-import time
-
-"""Main module."""
 def main():
-    """ Controls the major elements of the program"""
+    _stations = Stations.Station()  # ------- Object for stations
+    staticStations = _stations.getStation() # ------- Get the stations
+    print(staticStations)
 
-    # Calling the JCD Scrapper
-    jcd_scrapper.main()
-    time.sleep(305)
+if __name__=="__main__":
+    main()
 
