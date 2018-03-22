@@ -1,20 +1,18 @@
 function initMap() {
-    var map = new google.maps.Map(document.getElementById('map'), {
+    var mapOptions = {
         zoom: 12,
         center: { 'lat': 53.341833, 'lng': -6.231291 }
-    });
+    }
 
-    // // Array to label each marker
-    // var labels = 'ABCDEFGHIJKLMNOPQRSTUVWX';
-    
-    // Adding some markers to the Map
-    var markers = locations.map(function (location,i) {
-        return new google.maps.Marker({
-            position:location
+    // Setting the map
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+    //Marker for each one
+    console.log(locations[0].lat)
+    for (var i = 0; i < locations.length; i++) {
+        var marker = new google.maps.Marker({
+            position : new google.maps.LatLng(locations[i].lat,locations[i].lng),
+            map : map
         });        
-    });
-
-    // Adding a marker clusterer to manage the clustering
-    var markerCluster = new MarkerClusterer(map, markers, { imagePath:'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-
+    }
 }
