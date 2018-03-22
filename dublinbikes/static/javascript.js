@@ -13,38 +13,52 @@ function initMap() {
     var infowindows = [];
     var infowindowcontent = [];
     for (var i = 0; i < locations.length; i++) {
-        var contentString = '<div id="content">' +
-            '<div id = "content-station" >' + locations[i].name +
-            '</div ><div class=content-numbers>'+
-            '<div class="column"> Bikes' + locations[i].availBikes +
-            '</div>' + '<div class="column">' + locations[i].availStands +
-            '</div>' + '</div>' + '<div id="content-lud">LUD</div>' +
-            '</div >' + '</div>';
+        if (locations[i].status == 'OPEN'){
+            var contentString = '<div id="content">' +
+                '<div id = "content-station" >' + locations[i].name +
+                '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Bikes:</span><span id="contentNum">' +
+                locations[i].availBikes + '</span></div>' + '<div class="column"><span id="contentHolder">Stands:</span><span id="contentNum">' +
+                locations[i].availStands + '</span></div>' + '</div>' + '<div id="content-lud">Last Update at: ' + locations[i].lud + '</div>' +
+                '</div >' + '</div>';
+        } else{
+            var contentString = '<div id="content">' +
+                '<div id = "content-station" >' + locations[i].name +
+                '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Station Closed</span></div>' + 
+                '</div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + locations[i].lud + '</div>' +
+                '</div >' + '</div>';
+        }
+        
         infowindowcontent.push(contentString);
     }
 
+    var iconbase = '';
+    var latLng = {};
+    titleVal = '';
     var infowindow = new google.maps.InfoWindow();
     for (var i = 0; i < locations.length; i++) {
-        var bikePercent = (locations[i].availBikes / locations[i].tStands) * 100; // --------- Calculating the percentage of number of bikes in each stand
-        var iconbase = '';
-        var latLng = {};
-        titleVal = '';
-        if (bikePercent <= 0.25){
-            // console.log("Less than 25%"+i);
-            // RED MARKER
-            iconbase = 'static/img/marker_red.png';
-            latLng = { lat: locations[i].lat, lng: locations[i].lng};
-            titleVal = locations[i].name;
-        } else if (bikePercent > 0.25 && bikePercent < 0.75){
-            // console.log("Greater than 25%"+i);
-            // ORANGE MARKER
-            iconbase = 'static/img/marker_orange.png';
-            latLng = { lat: locations[i].lat, lng: locations[i].lng };
-            titleVal = locations[i].name;
+        if (locations[i].status == 'OPEN'){
+            var bikePercent = (locations[i].availBikes / locations[i].tStands) * 100; // --------- Calculating the percentage of number of bikes in each stand
+            if (bikePercent <= 0.25) {
+                // console.log("Less than 25%"+i);
+                // RED MARKER
+                iconbase = 'static/img/marker_red.png';
+                latLng = { lat: locations[i].lat, lng: locations[i].lng };
+                titleVal = locations[i].name;
+            } else if (bikePercent > 0.25 && bikePercent < 0.75) {
+                // console.log("Greater than 25%"+i);
+                // ORANGE MARKER
+                iconbase = 'static/img/marker_orange.png';
+                latLng = { lat: locations[i].lat, lng: locations[i].lng };
+                titleVal = locations[i].name;
+            } else {
+                // console.log("Greater than 75%"+i);
+                // GREEN MARKER
+                iconbase = 'static/img/marker_green.png';
+                latLng = { lat: locations[i].lat, lng: locations[i].lng };
+                titleVal = locations[i].name;
+            }
         } else {
-            // console.log("Greater than 75%"+i);
-            // GREEN MARKER
-            iconbase = 'static/img/marker_green.png';
+            iconbase = 'static/img/marker.png';
             latLng = { lat: locations[i].lat, lng: locations[i].lng };
             titleVal = locations[i].name;
         }
@@ -52,15 +66,15 @@ function initMap() {
             position: latLng,
             icon: iconbase,
             title: titleVal
-        });  
+        });
         markers.push(marker);
         // The below code is referred from stack overflow
-        google.maps.event.addListener(marker,'click',(function(marker,i){
-            return function() {
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            return function () {
                 infowindow.setContent(infowindowcontent[i]);
-                infowindow.open(map,marker);
+                infowindow.open(map, marker);
             }
-            })(marker, i));
+        })(marker, i));
         }
     var markerCluster = new MarkerClusterer(map, markers,
         { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });

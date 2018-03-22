@@ -18,7 +18,9 @@ def maps():
                      num=s['StationNum'],
                      tStands=s['TotalStands'],
                      availBikes=s['availableBikes'],
-                     availStands=s['availableStands'])
+                     availStands=s['availableStands'],
+                     status=s['Status'],
+                     lud = s['LUD'])
         coordinates.append(cords)
     # print(coordinates)
     # - Passing the list for Jinja to render

@@ -35,7 +35,7 @@ class Station():
         cursor = cnx.cursor()
 
         # Query to get the station data from the static table
-        staticStations = ("select A.station_number, A.station_name, A.station_pos_lat, A.station_pos_lon,B.station_status,B.station_total_bike_stands, B.station_available_bikes, B.station_available_bike_stands,B.station_data_LUD from jcdecaux_static_dublin_bikes A, jcdecaux_live_data B where A.station_number=B.station_number")
+        staticStations = ("select A.station_number, A.station_name, A.station_pos_lat, A.station_pos_lon,B.station_status,B.station_total_bike_stands, B.station_available_bikes, B.station_available_bike_stands,DATE_FORMAT(B.station_data_LUD, '%r %d %M %Y') as station_data_LUD from jcdecaux_static_dublin_bikes A, jcdecaux_live_data B where A.station_number=B.station_number")
 
         try:
             # -------- Execute on database and return values in cursor
