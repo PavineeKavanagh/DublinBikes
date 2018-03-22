@@ -4,14 +4,13 @@ function initMap() {
         center: { 'lat': 53.341833, 'lng': -6.231291 }
     });
 
-    // Array to label each marker
-    var labels = 'ABCDEFGHIJKLMNOPQRSTUVWX';
+    // // Array to label each marker
+    // var labels = 'ABCDEFGHIJKLMNOPQRSTUVWX';
     
     // Adding some markers to the Map
     var markers = locations.map(function (location,i) {
         return new google.maps.Marker({
-            position:location,
-            label: labels[ i % labels.length]
+            position:location
         });        
     });
 
