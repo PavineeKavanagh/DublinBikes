@@ -6,15 +6,21 @@ from dublinbikes import app
 # route() decorator tells Flask what URL should trigger our function
 
 
-@app.route('/maps')
+@app.route('/maps',methods=['GET','POST'])
 def maps():
     _stations = Station()  # ------------------------------------- Object for stations
     staticStations = _stations.getStation() # -------------------- Get the stations
     coordinates=[]
     for s in staticStations:
         cords = dict(lat=float(s['Latitude']),
-                     lng=float(s['Longitude']))
+                     lng=float(s['Longitude']),
+                     name=s['StationName'],
+                     num=s['StationNum'],
+                     tStands=s['TotalStands'],
+                     availBikes=s['availableBikes'],
+                     availStands=s['availableStands'])
         coordinates.append(cords)
+    # print(coordinates)
     # - Passing the list for Jinja to render
     return render_template("maps.html", items=staticStations, locs=coordinates)
 

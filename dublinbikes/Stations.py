@@ -35,7 +35,7 @@ class Station():
         cursor = cnx.cursor()
 
         # Query to get the station data from the static table
-        staticStations = ("Select * from jcdecaux_static_dublin_bikes")
+        staticStations = ("select A.station_number, A.station_name, A.station_pos_lat, A.station_pos_lon,B.station_status,B.station_total_bike_stands, B.station_available_bikes, B.station_available_bike_stands,B.station_data_LUD from jcdecaux_static_dublin_bikes A, jcdecaux_live_data B where A.station_number=B.station_number")
 
         try:
             # -------- Execute on database and return values in cursor
@@ -45,8 +45,9 @@ class Station():
 
         # Creating a list for the returned stations
         for i in cursor:
-            station = dict(StationNum=i[1], StationName=i[2], StationAddr=i[3], Latitude=float(
-                i[4]), Longitude=float(i[5]))
+            station = dict(StationNum=i[0], StationName=i[1], Latitude=float(
+                i[2]), Longitude=float(i[3]), Status=i[4], TotalStands = i[5],
+                availableBikes = i[6], availableStands=i[7], LUD = i[8])
             self.__stations.append(station)
         
         return self.__stations
