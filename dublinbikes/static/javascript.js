@@ -18,7 +18,7 @@ function initMap() {
                 '<div id = "content-station" >' + locations[i].name +
                 '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Bikes:</span><span id="contentNum">' +
                 locations[i].availBikes + '</span></div>' + '<div class="column"><span id="contentHolder">Stands:</span><span id="contentNum">' +
-                locations[i].availStands + '</span></div>' + '</div>' + '<div id="content-lud">Last Update at: ' + locations[i].lud + '</div>' +
+                locations[i].availStands + '</span></div>' + '</div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + locations[i].lud + '</div>' +
                 '</div >' + '</div>';
         } else{
             var contentString = '<div id="content">' +
