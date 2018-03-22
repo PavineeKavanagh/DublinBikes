@@ -3,13 +3,31 @@
 
 <head>
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <title> - station map</title>
 
 </head>
 <style>
     #map {
-        height: 1000px;
+        height: 700px;
         width: 100%;
+    }
+    #content {
+        font-family: 'Montserrat', sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #content-station {
+        font-weight: bold;
+        font-size: 1rem;
+    }
+    .content-numbers{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
     }
 </style>
 
@@ -17,6 +35,7 @@
     <h1>Hello,!</h1>
     <h2>Here is the map:
     </h2>
+    
     <!-- <img src="{{url_for('static', filename='marker.png')}}" /> -->
     <div id="map"></div>
     <script>
