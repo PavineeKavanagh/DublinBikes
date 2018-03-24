@@ -6,8 +6,8 @@ from dublinbikes import app
 # route() decorator tells Flask what URL should trigger our function
 
 
-@app.route('/maps',methods=['GET','POST'])
-def maps():
+@app.route('/',methods=['GET','POST'])
+def main():
     _stations = Station()  # ------------------------------------- Object for stations
     staticStations = _stations.getStation() # -------------------- Get the stations
     coordinates=[]
@@ -24,13 +24,7 @@ def maps():
         coordinates.append(cords)
     # print(coordinates)
     # - Passing the list for Jinja to render
-    return render_template("maps.html", items=staticStations, locs=coordinates)
-
-@app.route('/')
-def main():
-    returnDist = {}
-    returnDist = {'user':'Harsh'}
-    return render_template("index.html",**returnDist)
+    return render_template("index.html", items=staticStations, locs=coordinates)
 
 if __name__=="__main__":
     main()

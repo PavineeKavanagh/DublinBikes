@@ -1,7 +1,7 @@
 function initMap() {
     var mapOptions = {
         zoom: 15,
-        center: { 'lat': 53.341833, 'lng': -6.231291 }
+        center: { 'lat': 53.346973, 'lng': -6.256796 }
     }
 
     // Setting the map
@@ -37,14 +37,15 @@ function initMap() {
     var infowindow = new google.maps.InfoWindow();
     for (var i = 0; i < locations.length; i++) {
         if (locations[i].status == 'OPEN'){
-            var bikePercent = (locations[i].availBikes / locations[i].tStands) * 100; // --------- Calculating the percentage of number of bikes in each stand
+            var bikePercent = (locations[i].availBikes / locations[i].tStands); // --------- Calculating the percentage of number of bikes in each stand
+            console.log(bikePercent+' '+i);
             if (bikePercent <= 0.25) {
                 // console.log("Less than 25%"+i);
                 // RED MARKER
                 iconbase = 'static/img/marker_red.png';
                 latLng = { lat: locations[i].lat, lng: locations[i].lng };
                 titleVal = locations[i].name;
-            } else if (bikePercent > 0.25 && bikePercent < 0.75) {
+            } else if ((bikePercent > 0.25) && (bikePercent < 0.75)) {
                 // console.log("Greater than 25%"+i);
                 // ORANGE MARKER
                 iconbase = 'static/img/marker_orange.png';
@@ -58,16 +59,17 @@ function initMap() {
                 titleVal = locations[i].name;
             }
         } else {
-            iconbase = 'static/img/marker.png';
+            iconbase = 'static/img/marker_gray.png';
             latLng = { lat: locations[i].lat, lng: locations[i].lng };
             titleVal = locations[i].name;
         }
         var marker = new google.maps.Marker({
             position: latLng,
             icon: iconbase,
+            map: map,
             title: titleVal
         });
-        markers.push(marker);
+        // markers.push(marker);
         // The below code is referred from stack overflow
         google.maps.event.addListener(marker, 'click', (function (marker, i) {
             return function () {
@@ -76,6 +78,6 @@ function initMap() {
             }
         })(marker, i));
         }
-    var markerCluster = new MarkerClusterer(map, markers,
-        { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+    // var markerCluster = new MarkerClusterer(map, markers,
+    //     { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
 }
