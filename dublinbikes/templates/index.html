@@ -17,69 +17,12 @@
     <link href="static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="static/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+      crossorigin="anonymous"></script>
 
     <!-- Custom CSS -->
     <link href="static/css/style.min.css" rel="stylesheet">
-    <style>
-        #map {
-            height: 700px;
-            width: 100%;
-        }
-    
-        #content {
-            font-family: 'Montserrat', sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-    
-        #content-station {
-            font-weight: bold;
-            font-size: 1rem;
-        }
-    
-        .content-numbers {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-        }
-    
-        .column {
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-size: 0.8rem;
-        }
-    
-        #contentNum {
-            font-weight: bold;
-        }
-    
-        #content-lud {
-            font-size: 0.5rem;
-            color: #666666;
-        }
-        #Maps{
-          position: relative;
-        }
-        #contentHolder {
-            padding: 5px;
-        }
-        #descOver{
-          position: absolute;
-          top: 100px;
-          left: 40px;
-          z-index: 99;
-          height: 300px;
-          width: 300px;
-          border-radius: 10px;
-          background: #FAFAFA;
-        }
-    </style>
+    <link href="static/css/style1.css" rel="stylesheet">
   </head>
 
   <body id="page-top">
@@ -141,10 +84,22 @@
     <div id="map"></div>
     <div id="descOver">
       <div class="MapOverTitle">
-        <div id="bikeNum">
-          {{totalBikes}}
+        <div class="Title">Total Bikes</div>
+        <div class="Num">
+          <div class="values"><i class="fas fa-bicycle"></i></div>
+          <div class="values">{{tB}}</div>
+        </div>
+        <div class="Title">Total Stations</div>
+        <div class="Num">
+          <div class="values">
+            <i class="far fa-flag"></i>
+          </div>
+          <div class="values">{{tS}}</div>
         </div>
       </div>
+    </div>
+    <div id="bookBike">
+    <button type="button" class="btn btn-primary" id="btnBooking">Book a Bike</button>      
     </div>
     </section>
 
@@ -191,7 +146,6 @@
     <!-- Scripts for Map -->
     <script>
       var locations = {{ locs| safe}};
-      var tDetails = {{ tDetails | safe}};
     </script>
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
     </script>

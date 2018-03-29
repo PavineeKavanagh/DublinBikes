@@ -66,7 +66,6 @@ class Station():
             self.cursor.execute(totalBikes)
         except mysql.connector.Error as err:
             print("Could not retrieve static stations, Error: {}".format(err))
-
         # Creating a list for the returned stations
         for i in self.cursor:
             totalDetails = dict(tBikes=int(i[0]), tStations=int(i[1]))

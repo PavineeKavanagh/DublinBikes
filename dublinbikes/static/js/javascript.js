@@ -86,7 +86,6 @@ function initMap() {
 
     // Setting the map
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
-    console.log(tDetails);
     // Changing the icons for the markers
     //Marker for each one
     var markers = [];

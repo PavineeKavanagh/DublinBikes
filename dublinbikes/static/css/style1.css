@@ -1,0 +1,93 @@
+#map {
+    height: 500px;
+    width: 100%;
+}
+
+#content {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#content-station {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.content-numbers {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.column {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+#contentNum {
+    font-weight: bold;
+}
+
+#content-lud {
+    font-size: 0.5rem;
+    color: #666666;
+}
+#Maps{
+    position: relative;
+}
+#contentHolder {
+    padding: 5px;
+}
+#descOver{
+    position: absolute;
+    top: 75px;
+    left: 40px;
+    z-index: 99;
+    height: 330px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 5px, 5px, #333333;
+    background: #FAFAFA;
+}
+#bookBike{
+    
+    position: absolute;
+    bottom: 0em;
+    left: 40px;
+    z-index: 99;
+}
+#btnBooking{ 
+    width: 300px;
+    height: 50px;
+}
+.MapOverTitle{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    padding: 30px;
+}   
+.Title{
+    padding: 10px;
+    font-size: 1.5rem;
+
+}
+.Num{
+    display: flex;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    font-size: 2rem;
+    flex-direction: row;
+}
+.values{
+    padding-right: 40px;
+}
