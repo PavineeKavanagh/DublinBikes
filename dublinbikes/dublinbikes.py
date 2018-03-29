@@ -10,7 +10,9 @@ from dublinbikes import app
 def main():
     _stations = Station()  # ------------------------------------- Object for stations
     staticStations = _stations.getStation() # -------------------- Get the stations
+    statDetails = _stations.getAllDetails()
     coordinates=[]
+    totalDetails = []
     for s in staticStations:
         cords = dict(lat=float(s['Latitude']),
                      lng=float(s['Longitude']),
@@ -24,7 +26,7 @@ def main():
         coordinates.append(cords)
     # print(coordinates)
     # - Passing the list for Jinja to render
-    return render_template("index.html", items=staticStations, locs=coordinates)
+    return render_template("index.html", items=staticStations, locs=coordinates, tDetails = statDetails)
 
 if __name__=="__main__":
     main()

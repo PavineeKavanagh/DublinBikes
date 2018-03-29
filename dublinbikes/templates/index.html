@@ -22,7 +22,7 @@
     <link href="static/css/style.min.css" rel="stylesheet">
     <style>
         #map {
-            height: 500px;
+            height: 700px;
             width: 100%;
         }
     
@@ -63,9 +63,21 @@
             font-size: 0.5rem;
             color: #666666;
         }
-    
+        #Maps{
+          position: relative;
+        }
         #contentHolder {
             padding: 5px;
+        }
+        #descOver{
+          position: absolute;
+          top: 100px;
+          left: 40px;
+          z-index: 99;
+          height: 300px;
+          width: 300px;
+          border-radius: 10px;
+          background: #FAFAFA;
         }
     </style>
   </head>
@@ -125,13 +137,15 @@
     </section>
 
     <!-- Map -->
-    <section id="contact" class="map">
-      <!-- <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
-      <br/>
-      <small>
-        <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
-      </small> -->
+    <section id="Maps" class="map">
     <div id="map"></div>
+    <div id="descOver">
+      <div class="MapOverTitle">
+        <div id="bikeNum">
+          {{totalBikes}}
+        </div>
+      </div>
+    </div>
     </section>
 
 
@@ -176,7 +190,8 @@
     
     <!-- Scripts for Map -->
     <script>
-        var locations = {{ locs| safe}}
+      var locations = {{ locs| safe}};
+      var tDetails = {{ tDetails | safe}};
     </script>
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
     </script>
