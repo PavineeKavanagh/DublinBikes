@@ -7,6 +7,8 @@ class Station():
     def __init__(self):
         self.__stations = []
         self.__tDetails = []
+        self.__wDetails = []
+
         # Connecting to the MySQL Db
         self.config = {
             'user': 'root',
@@ -73,3 +75,21 @@ class Station():
             self.__tDetails.append(totalDetails)
 
         return self.__tDetails
+
+    def getWeather(self):
+
+        #Query to get the weather data
+        weatherData = ("SELECT * FROM dublinbikes.owm_live_data WHERE DATE(weather_sys_dt_txt) = DATE(NOW());")
+
+        try:
+            # ------Execute on database and return values in cursor
+            self.cursor.execute(weatherData)
+        except mysql.connector.Error as err:
+            print("Could not retrieve static stations, Error: {}".format(err))
+
+        # Creating a list for the returned stations
+        for i in self.cursor:
+            weatherData = dict(temp = int(i[0]), wDes = (i[4]), wSnow = (i[10]), wRain = (i[11]))
+            self.__wDetails.append(weatherData)
+        print(self.cursor)
+        return self.__wDetails

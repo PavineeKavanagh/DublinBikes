@@ -11,6 +11,8 @@ def main():
     _stations = Station()  # ------------------------------------- Object for stations
     staticStations = _stations.getStation() # -------------------- Get the stations
     statDetails = _stations.getAllDetails()
+    weatherDetails = _stations.getWeather()
+
     coordinates=[]
     totalDetails = []
     for s in staticStations:
@@ -24,7 +26,7 @@ def main():
                      status=s['Status'],
                      lud = s['LUD'])
         coordinates.append(cords)
-    # print(coordinates)
+    print(weatherDetails)
     # - Passing the list for Jinja to render
     return render_template("index.html", items=staticStations, locs=coordinates, tDetails = statDetails)
 
