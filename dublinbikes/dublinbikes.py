@@ -10,7 +10,13 @@ from dublinbikes import app
 def main():
     _stations = Station()  # ------------------------------------- Object for stations
     staticStations = _stations.getStation() # -------------------- Get the stations
-    statDetails = _stations.getAllDetails() # -------------------- Get the Total Details
+    statDetails = _stations.getAllDetails()
+    weatherDetails = _stations.getWeather()
+    mainTemp = weatherDetails[0]['temp']
+    mainDesc = weatherDetails[0]['wDes']
+    mainSnow = weatherDetails[0]['wSnow']
+    mainRain = weatherDetails[0]['wRain']
+    mainWind = weatherDetails[0]['wWind']
     coordinates=[]
     totalBikes = statDetails[0]['tBikes']
     totalStations = statDetails[0]['tStations']
@@ -25,9 +31,11 @@ def main():
                      status=s['Status'],
                      lud = s['LUD'])
         coordinates.append(cords)
-    # print(coordinates)
     # - Passing the list for Jinja to render
-    return render_template("index.html", items=staticStations, locs=coordinates, tB=totalBikes, tS=totalStations)
+    return render_template("index.html", items=staticStations, locs=coordinates, tB=totalBikes, tS=totalStations, mainTemp=mainTemp, mainDesc=mainDesc, mainSnow=mainSnow, mainRain=mainRain, mainWind = mainWind)
+@app.route('/maps')
+def mapsShow():
+    return render_template("maps.html")
 
 if __name__=="__main__":
     main()

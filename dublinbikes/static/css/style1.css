@@ -1,5 +1,5 @@
 #map {
-    height: 500px;
+    height: 550px;
     width: 100%;
 }
 
@@ -54,8 +54,27 @@
     height: 330px;
     width: 300px;
     border-radius: 10px;
-    box-shadow: 5px, 5px, #333333;
+    box-shadow: 2px 2px #DDD;
     background: #FAFAFA;
+    align-content: center;  
+    justify-content: center;
+}
+.MainTitle{
+    border-bottom: 1px solid #aaa;
+    text-align: center;
+}
+#weatherOver{
+    position: absolute;
+    top: 75px;
+    right: 40px;
+    z-index: 99;
+    height: 280px;
+    width: 360px;
+    border-radius: 10px;
+    box-shadow: 2px 2px #DDD;
+    background: #FAFAFA;
+    align-content: center;  
+    justify-content: center;
 }
 #bookBike{
     
@@ -77,6 +96,8 @@
 .Title{
     padding: 10px;
     font-size: 1.5rem;
+    display: flex;
+    flex-direction: row;
 
 }
 .Num{
@@ -89,5 +110,15 @@
     flex-direction: row;
 }
 .values{
-    padding-right: 40px;
+    padding-right: 20px;
+}
+#weatherTitle{
+    font-size: 3rem;
+}
+.values1{
+    justify-content: left;  
+}
+.subDetails{
+    display: flex;
+    flex-direction: row;
 }
