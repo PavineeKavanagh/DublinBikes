@@ -1,198 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-
-    <meta charset="utf-8">
+<head>
+    <!-- Viewport meta tags using "width=device-width" cause the page to scale down to fit content that overflows the viewport bounds. -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="A webpage for DublinBikes">
+    <meta name="authors" content="Elena, Harsh, Pavinee, Ying"> 
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/styleNew.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title> Dublin Bikes </title >
+</head>
 
-    <title>Dublin Bikes</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="static/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
-      crossorigin="anonymous"></script>
-
-    <!-- Custom CSS -->
-    <link href="static/css/style.min.css" rel="stylesheet">
-    <link href="static/css/style1.css" rel="stylesheet">
-  </head>
-
-  <body id="page-top">
+<body>
     <!-- Navigation -->
-    <a class="menu-toggle rounded" href="#">
-      <i class="fa fa-bars"></i>
-    </a>
-    <nav id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-        <li class="sidebar-brand">
-          <a class="js-scroll-trigger" href="#page-top">Dublin Bikes</a>
-        </li>
-        <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#page-top">Station Map</a>
-        </li>
-        <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#about">About</a>
-        </li>
-        <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="signup.html">Subscribe</a>
-        </li>
-        <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#portfolio">Predict</a>
-        </li>
-        <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#contact">Contact</a>
-        </li>
-      </ul>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">L O G O </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#Home">HOME</a>
+                    </li>
+                    <li>
+                        <a href="#Station Map">STATION MAP</a>
+                    </li>
+                    <li>
+                        <a href="#About">ABOUT</a>
+                    </li>
+                    <li>
+                        <a href="#Subscribe">SUBSCRIBE</a>
+                    </li>
+                    <li>
+                        <a href="#Predict">PREDICT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
     <!-- Header -->
-    <header class="masthead d-flex">
-      <div class="container text-center my-auto">
-        <h1 class="mb-1">Dublin Bikes</h1>
-        <h3 class="mb-5">
-          <em>Station Maps for Dublin Bikes</em>
-        </h3>
-        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#signup">Find Out More</a>
-      </div>
-      <div class="overlay"></div>
+    <header class="mainimg">
+        <div class="container text-center my-auto">
+            <div class="jumbotron">
+                <h1 class="dbText">Dublin Bikes</h1>
+                <h3>
+                    <em>Station Maps for Dublin Bikes</em>
+                </h3>
+                <a class="btn btn-primary btn-xl" href="#signup">Find Out More</a>
+            </div>
+        </div>
     </header>
 
-  
-    <!-- About -->
-    <section class="content-section bg-light" id="about">
-      <div class="container text-center">
-        <div class="row">
-          <div class="col-lg-10 mx-auto">
-            <h2>Predict the occupency for your favourite station based on the weather for your next cycle!</h2>
-            <p class="lead mb-5">Our site allows you to find out about your next trip!</p>
-            <a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">Do that here</a>
-          </div>
+    <!-- Predict -->
+    <section class="content-section bg-light" id="Predict">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2>
+                        <h2>Predict the occupency for your favourite station based on the weather for your next cycle!</h2>
+                        <p class="lead mb-5">Our site allows you to find out about your next trip!</p>
+                        <a class="btn btn-dark btn-xl" href="#services">Do that here</a>
+                    </h2>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
     <!-- Map -->
     <section id="Maps" class="map">
-    <div id="map">
-    </div><div id="weatherOver">
-      <div class="MapOverTitle">
-        <div class="MainTitle">Check the weather before you book</div>
-        {% if mainDesc == 'Rain'%}
-        <div class="Title" id="weatherTitle"><div class="values"><i class="fas fa-tint" style="color: #4FC3F7"></i></div>{{mainDesc}}</div>
-        {% endif %}
-        <div class="mainDetails">
-          <div class="subDetails">
-            <div class="Num">
-              <div class="values" style="font-size:1rem">
-                Temp:
-              </div>
-              <div class="values1" style="font-size:1rem">{{mainTemp}}</div>
-            </div>
-            <div class="Num">
-              <div class="values" style="font-size:1rem">
-                Rain:
-              </div>
-              <div class="values1" style="font-size:1rem">{{mainRain}}</div>
-            </div>
-          </div>
-          <div class="subDetails">
-            <div class="Num">
-              <div class="values" style="font-size:1rem">
-                Snow:
-              </div>
-              <div class="values1" style="font-size:1rem">{{mainSnow}}</div>
-            </div>
-            <div class="Num">
-              <div class="values" style="font-size:1rem">
-                Winds:
-              </div>
-              <div class="values1" style="font-size:1rem">{{mainWind}}</div>
-            </div>
-          </div>
+        <div id="map">
         </div>
-        
-        
-      </div>
-    </div>
-    <div id="descOver">
-      <div class="MapOverTitle">
-        <div class="MainTitle">Dublin Bikes Strength</div>
-        <div class="Title">Total Bikes</div>
-        <div class="Num">
-          <div class="values"><i class="fas fa-bicycle"></i></div>
-          <div class="values">{{tB}}</div>
+        <div id="weatherOver">
+            <div class="MapOverTitle">
+                <div class="MainTitle">Check the weather before you book</div>
+                {% if mainDesc == 'Rain'%}
+                <div class="Title" id="weatherTitle">
+                    <div class="values">
+                        <i class="fas fa-tint" style="color: #4FC3F7"></i>
+                    </div>{{mainDesc}}</div>
+                {% endif %}
+                <div class="mainDetails">
+                    <div class="subDetails">
+                        <div class="Num">
+                            <div class="values" style="font-size:1rem">
+                                Temp:
+                            </div>
+                            <div class="values1" style="font-size:1rem">{{mainTemp}}</div>
+                        </div>
+                        <div class="Num">
+                            <div class="values" style="font-size:1rem">
+                                Rain:
+                            </div>
+                            <div class="values1" style="font-size:1rem">{{mainRain}}</div>
+                        </div>
+                    </div>
+                    <div class="subDetails">
+                        <div class="Num">
+                            <div class="values" style="font-size:1rem">
+                                Snow:
+                            </div>
+                            <div class="values1" style="font-size:1rem">{{mainSnow}}</div>
+                        </div>
+                        <div class="Num">
+                            <div class="values" style="font-size:1rem">
+                                Winds:
+                            </div>
+                            <div class="values1" style="font-size:1rem">{{mainWind}}</div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
         </div>
-        <div class="Title">Total Stations</div>
-        <div class="Num">
-          <div class="values">
-            <i class="far fa-flag"></i>
-          </div>
-          <div class="values">{{tS}}</div>
+        <div id="descOver">
+            <div class="MapOverTitle">
+                <div class="MainTitle">Dublin Bikes Strength</div>
+                <div class="Title">Total Bikes</div>
+                <div class="Num">
+                    <div class="values">
+                        <i class="fas fa-bicycle"></i>
+                    </div>
+                    <div class="values">{{tB}}</div>
+                </div>
+                <div class="Title">Total Stations</div>
+                <div class="Num">
+                    <div class="values">
+                        <i class="far fa-flag"></i>
+                    </div>
+                    <div class="values">{{tS}}</div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div id="bookBike">
-    <button type="button" class="btn btn-primary" id="btnBooking" onclick="window.location.href='{{ url_for('mapsShow') }}';">Book a Bike</button>      
-    </div>
+        <div id="bookBike">
+            <button type="button" class="btn btn-primary" id="btnBooking" onclick="window.location.href='{{ url_for('mapsShow') }}';">Book a Bike</button>
+        </div>
     </section>
-
-
-    <!-- Footer -->
-    <footer class="footer text-center">
-      <div class="container">
-        <ul class="list-inline mb-5">
-          <li class="list-inline-item">
-            <a class="social-link rounded-circle text-white mr-3" href="#">
-              <i class="icon-social-facebook"></i>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a class="social-link rounded-circle text-white mr-3" href="#">
-              <i class="icon-social-twitter"></i>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a class="social-link rounded-circle text-white" href="#">
-              <i class="icon-social-github"></i>
-            </a>
-          </li>
-        </ul>
-        <p class="text-muted small mb-0">Copyright &copy; Dublin Bikes 2018</p>
-      </div>
-    </footer>
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
-      <i class="fa fa-angle-up"></i>
-    </a>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="static/vendor/jquery/jquery.min.js"></script>
-    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="static/js/js.min.js"></script>
     
-    <!-- Scripts for Map -->
-    <script>
-      var locations = {{ locs| safe}};
-    </script>
-    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
-    </script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/javascript.js') }}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-QM6kmMT69XX3uQsuhP260P7dUvZ3M2I&callback=initMap" async
-        defer></script>
-  </body>
+        <!-- Scripts for Map -->
+        <script>
+          var locations = {{ locs| safe }};
+        </script>
+        <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+        </script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/javascript.js') }}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-QM6kmMT69XX3uQsuhP260P7dUvZ3M2I&callback=initMap" async defer>
+        </script>
+</body>
 
 </html>
