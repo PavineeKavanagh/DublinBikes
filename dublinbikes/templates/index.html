@@ -8,6 +8,7 @@
     <meta name="authors" content="Elena, Harsh, Pavinee, Ying"> 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../static/css/styleNew.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -80,6 +81,10 @@
     <!-- Map -->
     <section id="Maps" class="map">
         <div id="map">
+
+        <div>
+            <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+        </div>
         </div>
         <div id="weatherOver">
             <div class="MapOverTitle">
@@ -147,16 +152,48 @@
             <button type="button" class="btn btn-primary" id="btnBooking" onclick="window.location.href='{{ url_for('mapsShow') }}';">Book a Bike</button>
         </div>
     </section>
+
+
+
+<footer class="footer text-center">
+<div class="container">
+    <ul class="list-inline mb-5">
+        <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white mr-3" href="#">
+                <i class="icon-social-facebook"></i>
+            </a>
+        </li>
+        <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white mr-3" href="#">
+                <i class="icon-social-twitter"></i>
+            </a>
+        </li>
+        <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white" href="#">
+                <i class="icon-social-github"></i>
+            </a>
+        </li>
+    </ul>
+    <p class="text-muted small mb-0">Copyright &copy; Dublin Bikes 2018</p>
+</div>
+
+</footer>
+
     
         <!-- Scripts for Map -->
+
         <script>
           var locations = {{ locs| safe }};
         </script>
+        <script src="../static/js/javascript.js"></script>
+
+
         <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
         </script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/javascript.js') }}"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-QM6kmMT69XX3uQsuhP260P7dUvZ3M2I&callback=initMap" async defer>
         </script>
+
 </body>
 
 </html>
