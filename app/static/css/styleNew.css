@@ -235,17 +235,23 @@ a:active {
     padding: 2rem 4rem;
 }
 
-.btn-secondary {
+/* .btn-secondary {
     background-color: #ecb807 !important;
     border-color: #ecb807 !important;
+    color: #fff !important;
+} */
+
+.btn-secondary {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
     color: #fff !important;
 }
 
 .btn-secondary:hover,
 .btn-secondary:focus,
 .btn-secondary:active {
-    background-color: #ba9106 !important;
-    border-color: #ba9106 !important;
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
 }
 
 .btn {
@@ -273,6 +279,7 @@ a:active {
 #content-station {
     font-weight: bold;
     font-size: 1rem;
+    align-items: center;
 }
 
 .content-numbers {
@@ -283,7 +290,7 @@ a:active {
 }
 
 .column {
-    padding: 10px;
+    padding: 10px 10px 0px 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -296,16 +303,18 @@ a:active {
 }
 
 #content-lud {
-    font-size: 0.5rem;
+    font-size: 1rem;
     color: #666666;
+    padding: 10px;
 }
+    
 
 #Maps {
     position: relative;
 }
 
 #contentHolder {
-    padding: 5px;
+    padding: 5px 5px 0px 5px;
 }
 
 #descOver {

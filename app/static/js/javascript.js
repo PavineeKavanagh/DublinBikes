@@ -1,9 +1,9 @@
-$(document).ready(function () {
-    if (window.location.href.indexOf("maps") > -1) {
-        alert("your url contains the name maps");
-    }
-});
+
 function initMap() {
+    var flag;
+    if (window.location.href.indexOf("maps") > -1) {
+        flag = "true";
+    }
     var mapOptions = {
         zoom: 15,
         center: { 'lat': 53.346973, 'lng': -6.256796 },
@@ -97,21 +97,44 @@ function initMap() {
     var infowindows = [];
     var infowindowcontent = [];
     for (var i = 0; i < locations.length; i++) {
-        if (locations[i].Status == 'OPEN'){
-            var contentString = '<div id="content">' +
-                '<div id = "content-station" >' + locations[i].StationName +
-                '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Bikes:</span><span id="contentNum">' +
-                locations[i].availableBikes + '</span></div>' + '<div class="column"><span id="contentHolder">Stands:</span><span id="contentNum">' +
-                locations[i].availableStands + '</span></div>' + '</div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + locations[i].LUD + '</div>' +
-                '</div >' + '</div>';
-        } else{
-            var contentString = '<div id="content">' +
-                '<div id = "content-station" >' + locations[i].StationName +
-                '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Station Closed</span></div>' + 
-                '</div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + locations[i].LUD + '</div>' +
-                '</div >' + '</div>';
+        if (flag=="true"){
+            if ((locations[i].Status == 'OPEN') && (locations[i].availableBikes>0)) {
+                var contentString = '<div id="content">' +
+                    '<div id = "content-station" >' + locations[i].StationName +
+                    '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Bikes:</span><span id="contentNum">' +
+                    locations[i].availableBikes + '</span></div>' + '<div class="column"><span id="contentHolder">Stands:</span><span id="contentNum">' +
+                    locations[i].availableStands + '</span></div>' + '</div id="bookButton"><buttontype="button" class="btn btn-primary" style="margin-top:0px">Get a Bike</button></div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + locations[i].LUD + '</div>' +
+                    '</div >' + '</div>';
+            } else if ((locations[i].Status == 'OPEN') && (locations[i].availableBikes == 0)){
+                var contentString = '<div id="content">' +
+                    '<div id = "content-station" >' + locations[i].StationName +
+                    '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Bikes:</span><span id="contentNum">' +
+                    locations[i].availableBikes + '</span></div>' + '<div class="column"><span id="contentHolder">Stands:</span><span id="contentNum">' +
+                    locations[i].availableStands + '</span></div>' + '</div id="bookButton"><buttontype="button" class="btn btn-secondary disabled" style="margin-top:0px" aria-disabled="true">Get a Bike</button></div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + locations[i].LUD + '</div>' +
+                    '</div >' + '</div>';
+            } else {
+                var contentString = '<div id="content">' +
+                    '<div id = "content-station" >' + locations[i].StationName +
+                    '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Station Closed</span></div>' +
+                    '</div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + locations[i].LUD + '</div>' +
+                    '</div >' + '</div>';
+            }
+        } else {
+            if (locations[i].Status == 'OPEN') {
+                var contentString = '<div id="content">' +
+                    '<div id = "content-station" >' + locations[i].StationName +
+                    '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Bikes:</span><span id="contentNum">' +
+                    locations[i].availableBikes + '</span></div>' + '<div class="column"><span id="contentHolder">Stands:</span><span id="contentNum">' +
+                    locations[i].availableStands + '</span></div>' + '</div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + locations[i].LUD + '</div>' +
+                    '</div >' + '</div>';
+            } else {
+                var contentString = '<div id="content">' +
+                    '<div id = "content-station" >' + locations[i].StationName +
+                    '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Station Closed</span></div>' +
+                    '</div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + locations[i].LUD + '</div>' +
+                    '</div >' + '</div>';
+            }
         }
-        
         infowindowcontent.push(contentString);
     }
 
