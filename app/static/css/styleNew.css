@@ -555,3 +555,10 @@ a:focus,
 a:active {
     color: #155d74;
 }
+
+#MapFull{
+    padding-top:0px; 
+    margin-top:80px; 
+    margin-bottom:0px;
+    padding-bottom:0px
+}

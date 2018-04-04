@@ -36,16 +36,16 @@
                         <a href="#Home">HOME</a>
                     </li>
                     <li>
-                        <a href="#Station Map">STATION MAP</a>
+                        <a class="js-scroll-trigger" href="#Maps">STATION MAP</a>
                     </li>
                     <li>
-                        <a href="#About">ABOUT</a>
+                        <a href="{{ url_for('mapsShow') }}">BOOK A BIKE</a>
                     </li>
                     <li>
-                        <a href="#Subscribe">SUBSCRIBE</a>
+                        <a href="#Subscribe">ABOUT</a>
                     </li>
                     <li>
-                        <a href="#Predict">PREDICT</a>
+                        <a href="#Predict">SUBSCRIBE</a>
                     </li>
                 </ul>
             </div>
@@ -60,7 +60,7 @@
                 <h3>
                     <em>Station Maps for Dublin Bikes</em>
                 </h3>
-                <a class="btn btn-primary btn-xl" href="#signup">Find Out More</a>
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="#Maps">Find Out More</a>
             </div>
         </div>
     </header>
@@ -205,6 +205,7 @@
           var locations = {{ locs| safe }};
         </script>
         <script src="../static/js/javascript.js"></script>
+        <script src="../static/js/js.js"></script>
 
 
         <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">

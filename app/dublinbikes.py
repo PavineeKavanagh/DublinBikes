@@ -31,23 +31,16 @@ def main():
     coordinates=[]
     totalBikes = statDetails[0]['tBikes']
     totalStations = statDetails[0]['tStations']
-    for s in staticStations:
-        cords = dict(lat=float(s['Latitude']),
-                     lng=float(s['Longitude']),
-                     name=s['StationName'],
-                     num=s['StationNum'],
-                     tStands=s['TotalStands'],
-                     availBikes=s['availableBikes'],
-                     availStands=s['availableStands'],
-                     status=s['Status'],
-                     lud = s['LUD'])
-        coordinates.append(cords)
     print('Rendering Template')
     # - Passing the list for Jinja to render
-    return render_template("index.html", items=staticStations, locs=coordinates, tB=totalBikes, tS=totalStations, mainTemp=mainTemp, mainDesc=mainDesc, mainSnow=mainSnow, mainRain=mainRain, mainWind = mainWind)
+    return render_template("index.html",locs=staticStations, tB=totalBikes, tS=totalStations, mainTemp=mainTemp, mainDesc=mainDesc, mainSnow=mainSnow, mainRain=mainRain, mainWind=mainWind)
 @app.route('/maps')
 def mapsShow():
-    return render_template("maps.html")
+    _mapsObj = Station()
+    staticStations = _mapsObj.getStation()
+    print(staticStations)
+    _mapsObj.closeConn()
+    return render_template("maps.html", locs=staticStations)
 
 if __name__=="__main__":
     print('In the app')

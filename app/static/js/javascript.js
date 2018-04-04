@@ -93,18 +93,18 @@ function initMap() {
     var infowindows = [];
     var infowindowcontent = [];
     for (var i = 0; i < locations.length; i++) {
-        if (locations[i].status == 'OPEN'){
+        if (locations[i].Status == 'OPEN'){
             var contentString = '<div id="content">' +
-                '<div id = "content-station" >' + locations[i].name +
+                '<div id = "content-station" >' + locations[i].StationName +
                 '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Bikes:</span><span id="contentNum">' +
-                locations[i].availBikes + '</span></div>' + '<div class="column"><span id="contentHolder">Stands:</span><span id="contentNum">' +
-                locations[i].availStands + '</span></div>' + '</div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + locations[i].lud + '</div>' +
+                locations[i].availableBikes + '</span></div>' + '<div class="column"><span id="contentHolder">Stands:</span><span id="contentNum">' +
+                locations[i].availableStands + '</span></div>' + '</div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + locations[i].LUD + '</div>' +
                 '</div >' + '</div>';
         } else{
             var contentString = '<div id="content">' +
-                '<div id = "content-station" >' + locations[i].name +
+                '<div id = "content-station" >' + locations[i].StationName +
                 '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Station Closed</span></div>' + 
-                '</div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + locations[i].lud + '</div>' +
+                '</div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + locations[i].LUD + '</div>' +
                 '</div >' + '</div>';
         }
         
@@ -116,32 +116,32 @@ function initMap() {
     titleVal = '';
     var infowindow = new google.maps.InfoWindow();
     for (var i = 0; i < locations.length; i++) {
-        if (locations[i].status == 'OPEN'){
-            var bikePercent = (locations[i].availBikes / locations[i].tStands); // --------- Calculating the percentage of number of bikes in each stand
+        if (locations[i].Status == 'OPEN'){
+            var bikePercent = (locations[i].availableBikes / locations[i].TotalStands); // --------- Calculating the percentage of number of bikes in each stand
             // console.log(bikePercent+' '+i);
             if (bikePercent <= 0.25) {
                 // console.log("Less than 25%"+i);
                 // RED MARKER
                 iconbase = 'static/img/marker_red.png';
-                latLng = { lat: locations[i].lat, lng: locations[i].lng };
-                titleVal = locations[i].name;
+                latLng = { lat: locations[i].Latitude, lng: locations[i].Longitude };
+                titleVal = locations[i].StationName;
             } else if ((bikePercent > 0.25) && (bikePercent < 0.75)) {
                 // console.log("Greater than 25%"+i);
                 // ORANGE MARKER
                 iconbase = 'static/img/marker_orange.png';
-                latLng = { lat: locations[i].lat, lng: locations[i].lng };
-                titleVal = locations[i].name;
+                latLng = { lat: locations[i].Latitude, lng: locations[i].Longitude };
+                titleVal = locations[i].StationName;
             } else {
                 // console.log("Greater than 75%"+i);
                 // GREEN MARKER
                 iconbase = 'static/img/marker_green.png';
-                latLng = { lat: locations[i].lat, lng: locations[i].lng };
-                titleVal = locations[i].name;
+                latLng = { lat: locations[i].Latitude, lng: locations[i].Longitude };
+                titleVal = locations[i].StationName;
             }
         } else {
             iconbase = 'static/img/marker_gray.png';
-            latLng = { lat: locations[i].lat, lng: locations[i].lng };
-            titleVal = locations[i].name;
+            latLng = { lat: locations[i].Latitude, lng: locations[i].Longitude };
+            titleVal = locations[i].StationName;
         }
         var marker = new google.maps.Marker({
             position: latLng,
