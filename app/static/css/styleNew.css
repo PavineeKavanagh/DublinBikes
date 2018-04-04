@@ -1,0 +1,564 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+}
+
+.container {
+    width: 100%;
+    padding: 80px 120px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: center;
+    ;
+}
+
+body {
+    font-family: 'Helvetica';
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.jumbotron {
+    background-color: transparent;
+    margin-top: 100px;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.mx-auto {
+    margin-right: auto !important;
+}
+
+.mainimg {
+    min-height: 30rem;
+    position: relative;
+    display: table;
+    width: 100%;
+    height: 70%;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../img/city-bikes-dublin-bicycles.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.mainimg h1 {
+    margin: 0;
+    padding: 0;
+}
+
+em {
+    margin: 0;
+    padding: 0;
+    font-size: 2rem;
+}
+
+@media (min-width: 992px) {
+    .mainimg {
+        height: 100vh;
+    }
+    .mainimg h1 {
+        font-size: 5.5rem;
+    }
+}
+
+.dbText {
+    padding-top: 40px;
+    font-size: 50px;
+    margin-bottom: 0.25rem !important;
+}
+
+.content-section {
+    padding-top: 7.5rem;
+    padding-bottom: 7.5rem;
+}
+
+.content-section-heading h2 {
+    font-size: 3rem;
+}
+
+.content-section-heading h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+}
+
+.navbar {
+    margin-bottom: 0;
+    background-color: #ececec;
+    border: 0;
+    min-height: 80px;
+    font-size: 13px !important;
+    letter-spacing: 4px;
+    opacity: 0.9;
+    z-index: 9999;
+    border: 0;
+    line-height: 1.42857143 !important;
+    border-radius: 0;
+    /* makes the navbar a little bit see-through */
+}
+
+/* Nav-bar link colour */
+
+.navbar li a,
+.navbar .navbar-brand {
+    color: #2d2d30 !important;
+    margin-top: 15px;
+    margin-right: 20px;
+}
+
+/* On hover, the links will turn white */
+
+.navbar-nav li a:hover {
+    color: rgb(46, 46, 46) !important;
+}
+
+/* The active link */
+
+.navbar-nav li.active a {
+    color: #fff !important;
+    background-color: #29292c !important;
+}
+
+/* Remove border color from the collapsible button */
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+}
+
+/* Dropdown */
+
+.open .dropdown-toggle {
+    color: #fff;
+    background-color: #555 !important;
+}
+
+/* Dropdown links */
+
+.dropdown-menu li a {
+    color: #000 !important;
+}
+
+/* On hover, the dropdown links will turn red */
+
+.dropdown-menu li a:hover {
+    background-color: red !important;
+}
+
+a {
+    color: #1D809F;
+}
+
+a:hover,
+a:focus,
+a:active {
+    color: #155d74;
+}
+
+.btn-primary {
+    background-color: rgb(23, 175, 221) !important;
+    border-color: rgb(23, 175, 221) !important;
+    color: #fff !important;
+    margin-top: 30px;
+}
+
+.btn-dark {
+    color: #ffffff !important;
+    background-color: #29292c;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: #155d74 !important;
+    border-color: #155d74 !important;
+}
+
+.btn-xl {
+    padding: 2rem 4rem;
+}
+
+.btn-secondary {
+    background-color: #ecb807 !important;
+    border-color: #ecb807 !important;
+    color: #fff !important;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active {
+    background-color: #ba9106 !important;
+    border-color: #ba9106 !important;
+}
+
+.btn {
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.1);
+    font-weight: 700;
+}
+
+.bg-primary {
+    background-color: #1D809F !important;
+}
+
+#map {
+    height: 550px;
+    width: 100%;
+}
+
+#content {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#content-station {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.content-numbers {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.column {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
+
+#contentNum {
+    font-weight: bold;
+}
+
+#content-lud {
+    font-size: 0.5rem;
+    color: #666666;
+}
+
+#Maps {
+    position: relative;
+}
+
+#contentHolder {
+    padding: 5px;
+}
+
+#descOver {
+    position: absolute;
+    top: 75px;
+    left: 40px;
+    z-index: 99;
+    height: 330px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 2px 2px #DDD;
+    background: #FAFAFA;
+    align-content: center;
+    justify-content: center;
+}
+
+.MainTitle {
+    border-bottom: 1px solid #aaa;
+    text-align: center;
+}
+
+#weatherOver {
+    position: absolute;
+    top: 75px;
+    right: 40px;
+    z-index: 99;
+    height: 280px;
+    width: 360px;
+    border-radius: 10px;
+    box-shadow: 2px 2px #DDD;
+    background: #FAFAFA;
+    align-content: center;
+    justify-content: center;
+}
+
+#bookBike {
+    position: absolute;
+    bottom: 0em;
+    top: 55ex;
+    left: 40px;
+}
+
+#btnBooking {
+    width: 300px;
+    height: 50px;
+}
+
+.MapOverTitle {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    padding: 30px;
+}
+
+.Title {
+    padding: 10px;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.Num {
+    display: flex;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    font-size: 2rem;
+    flex-direction: row;
+}
+
+.values {
+    padding-right: 20px;
+}
+
+#weatherTitle {
+    font-size: 3rem;
+}
+
+.values1 {
+    justify-content: left;
+}
+
+.subDetails {
+    display: flex;
+    flex-direction: row;
+}
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12,
+.col,
+.col-auto,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm,
+.col-sm-auto,
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md,
+.col-md-auto,
+.col-lg-1,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-lg,
+.col-lg-auto,
+.col-xl-1,
+.col-xl-2,
+.col-xl-3,
+.col-xl-4,
+.col-xl-5,
+.col-xl-6,
+.col-xl-7,
+.col-xl-8,
+.col-xl-9,
+.col-xl-10,
+.col-xl-11,
+.col-xl-12,
+.col-xl,
+.col-xl-auto {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+
+
+.pac-card {
+    margin: 10px 10px 0 0;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    font-family: Roboto;
+}
+
+#pac-container {
+    padding-bottom: 12px;
+    margin-right: 12px;
+}
+
+.pac-controls {
+    display: inline-block;
+    padding: 5px 11px;
+}
+
+.pac-controls label {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+#pac-input {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 400px;
+}
+
+#pac-input:focus {
+    border-color: #4d90fe;
+}
+
+.bg-4 {
+    background-color: #2f2f2f;
+    color: #ffffff;
+}
+
+footer.footer {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+footer.footer {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+footer.footer .social-link {
+    display: block;
+    height: 4rem;
+    width: 4rem;
+    line-height: 4.3rem;
+    font-size: 1.5rem;
+    background-color: #1D809F;
+    transition: background-color 0.15s ease-in-out;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+footer.footer .social-link:hover {
+    background-color: #155d74;
+    text-decoration: none;
+}
+
+a {
+    color: #1D809F;
+}
+
+a:hover,
+a:focus,
+a:active {
+    color: #155d74;
+}
+
+#MapFull{
+    padding-top:0px; 
+    margin-top:80px; 
+    margin-bottom:0px;
+    padding-bottom:0px
+}

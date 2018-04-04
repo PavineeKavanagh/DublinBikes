@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Viewport meta tags using "width=device-width" cause the page to scale down to fit content that overflows the viewport bounds. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A webpage for DublinBikes">
+    <meta name="authors" content="Elena, Harsh, Pavinee, Ying">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/styleNew.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+        crossorigin="anonymous"></script>
+    <title> DB - Book a Bike </title>
+</head>
+<body style="overflow:hidden">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #E8EAF6">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">L O G O </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="{{ url_for('main') }}">HOME</a>
+                    </li>
+                    <li>
+                        <a class="js-scroll-trigger" href="#Maps">STATION MAP</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('mapsShow') }}">BOOK A BIKE</a>
+                    </li>
+                    <li>
+                        <a href="#Subscribe">ABOUT</a>
+                    </li>
+                    <li>
+                        <a href="#Predict">SUBSCRIBE</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header>
+        <div class="text-center my-auto">
+            <div class="jumbotron" id="MapFull" style="padding-top:0px; margin-top:80px; margin-bottom:0px;padding-bottom:0px">
+                <div style=>
+                    <div id="map" style="height:700px">
+
+                    </div>
+                </div>
+            </div>
+    </div>
+    </header>
+    <script>
+        var locations = {{ locs| safe }};
+    </script>
+    <script src="../static/js/javascript.js"></script>
+    
+    
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/javascript.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-QM6kmMT69XX3uQsuhP260P7dUvZ3M2I&callback=initMap" async
+        defer>
+        </script>
+</body>
