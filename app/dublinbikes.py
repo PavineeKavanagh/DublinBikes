@@ -21,7 +21,7 @@ def main():
     print('Stations Fetched')
     statDetails = _stations.getAllDetails()
     weatherDetails = _stations.getWeather()
-    _stations.closeCon()
+    _stations.closeConn()
     print('Connections Closed')
     mainTemp = weatherDetails[0]['temp']
     mainDesc = weatherDetails[0]['wDes']

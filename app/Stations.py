@@ -101,5 +101,5 @@ class Station():
             self.__wDetails.append(weatherData)
         return self.__wDetails
     
-    def closeCon(self):
+    def closeConn(self):
         self.__cnx.close()
