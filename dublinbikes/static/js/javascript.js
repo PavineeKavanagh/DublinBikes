@@ -92,15 +92,31 @@ function initMap() {
     var markers = [];
     var infowindows = [];
     var infowindowcontent = [];
-    // // Create the search box and link it to the UI element.
-    // var input = document.getElementById('pac-input');
-    // var searchBox = new google.maps.places.SearchBox(input);
-    // map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
+    // Create the search box and link it to the UI element.
+    var input = document.getElementById('pac-input');
+    var searchBox = new google.maps.places.SearchBox(input);
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
 
-    //    // Bias the SearchBox results towards current map's viewport.
-    //    map.addListener('bounds_changed', function () {
-    //        searchBox.setBounds(map.getBounds());
-    //    });
+       // Bias the SearchBox results towards current map's viewport.
+       map.addListener('bounds_changed', function () {
+           searchBox.setBounds(map.getBounds());
+       });
+
+    var markers = [];
+    // Listen for the event fired when the user selects a prediction and retrieve
+    // more details for that place.
+    searchBox.addListener('places_changed', function () {
+        var places = searchBox.getPlaces();
+
+        if (places.length == 0) {
+            return;
+        }
+
+        // Clear out the old markers.
+        markers.forEach(function (marker) {
+            marker.setMap(null);
+        });
+        markers = [];
 
   
     
