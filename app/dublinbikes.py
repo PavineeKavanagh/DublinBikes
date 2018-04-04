@@ -40,7 +40,7 @@ def mapsShow():
     staticStations = _mapsObj.getStation()
     print(staticStations)
     _mapsObj.closeConn()
-    return render_template("maps.html", locs=staticStations)
+    return render_template("maps.html", locs=staticStations, flag="True")
 
 if __name__=="__main__":
     print('In the app')

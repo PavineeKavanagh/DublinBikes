@@ -1,4 +1,8 @@
-
+$(document).ready(function () {
+    if (window.location.href.indexOf("maps") > -1) {
+        alert("your url contains the name maps");
+    }
+});
 function initMap() {
     var mapOptions = {
         zoom: 15,

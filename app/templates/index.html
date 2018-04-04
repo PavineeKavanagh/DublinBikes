@@ -32,19 +32,19 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#Home">HOME</a>
+                    <li class="nav-item active">
+                        <a href="{{ url_for('main') }}">HOME</a>
                     </li>
-                    <li>
+                    <li class="nav-item">
                         <a class="js-scroll-trigger" href="#Maps">STATION MAP</a>
                     </li>
-                    <li>
-                        <a href="{{ url_for('mapsShow') }}">BOOK A BIKE</a>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('mapsShow') }}">BOOK A BIKE</a>
                     </li>
-                    <li>
+                    <li class="nav-item">
                         <a href="#Subscribe">ABOUT</a>
                     </li>
-                    <li>
+                    <li class="nav-item">
                         <a href="#Predict">SUBSCRIBE</a>
                     </li>
                 </ul>
@@ -203,6 +203,7 @@
 
         <script>
           var locations = {{ locs| safe }};
+
         </script>
         <script src="../static/js/javascript.js"></script>
         <script src="../static/js/js.js"></script>
