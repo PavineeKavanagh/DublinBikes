@@ -18,14 +18,12 @@ h6 {
 }
 
 .container {
-    width: 100%;
     padding: 80px 120px;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
     margin-top: center;
-    ;
 }
 
 body {
@@ -142,7 +140,7 @@ h6 {
 
 .navbar {
     margin-bottom: 0;
-    background-color: #ececec;
+    background-color: #353535;
     border: 0;
     min-height: 80px;
     font-size: 13px !important;
@@ -159,47 +157,20 @@ h6 {
 
 .navbar li a,
 .navbar .navbar-brand {
-    color: #2d2d30 !important;
+    color: #dddddd !important;
     margin-top: 15px;
     margin-right: 20px;
+    padding-bottom: 0px;
+    width: inherit;
 }
 
 /* On hover, the links will turn white */
 
 .navbar-nav li a:hover {
-    color: rgb(46, 46, 46) !important;
-}
-
-/* The active link */
-
-.navbar-nav li.active a {
-    color: #fff !important;
-    background-color: #29292c !important;
-}
-
-/* Remove border color from the collapsible button */
-
-.navbar-default .navbar-toggle {
-    border-color: transparent;
-}
-
-/* Dropdown */
-
-.open .dropdown-toggle {
-    color: #fff;
-    background-color: #555 !important;
-}
-
-/* Dropdown links */
-
-.dropdown-menu li a {
-    color: #000 !important;
-}
-
-/* On hover, the dropdown links will turn red */
-
-.dropdown-menu li a:hover {
-    background-color: red !important;
+    color: rgb(224, 224, 224) !important;
+    border-bottom: 2px solid #ffffff;
+    margin-bottom: -10px;
+    cursor: pointer;
 }
 
 a {
@@ -439,7 +410,6 @@ a:active {
 .col-lg-1,
 .col-lg-2,
 .col-lg-3,
-.col-lg-4,
 .col-lg-5,
 .col-lg-6,
 .col-lg-7,
@@ -465,13 +435,10 @@ a:active {
 .col-xl,
 .col-xl-auto {
     position: relative;
-    width: 100%;
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
 }
-
-
 
 .pac-card {
     margin: 10px 10px 0 0;
@@ -520,14 +487,12 @@ a:active {
     color: #ffffff;
 }
 
-footer.footer {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-}
+/* Footer */
 
-footer.footer {
+footer {
     padding-top: 5rem;
     padding-bottom: 5rem;
+    background-color: dimgray;
 }
 
 footer.footer .social-link {
@@ -556,9 +521,86 @@ a:active {
     color: #155d74;
 }
 
-#MapFull{
-    padding-top:0px; 
-    margin-top:80px; 
-    margin-bottom:0px;
-    padding-bottom:0px
+#MapFull {
+    padding-top: 0px;
+    margin-top: 80px;
+    margin-bottom: 0px;
+    padding-bottom: 0px
+}
+
+/* How it works page */
+
+.panel {
+    border: 2px solid #1e94f4;
+    border-radius: 0;
+    transition: box-shadow 0.5s;
+    margin-top: 20px;
+}
+
+.panel:hover {
+    box-shadow: 5px 0px 40px rgba(0, 0, 0, .2);
+}
+
+.panel-footer .btn:hover {
+    border: 1px solid #1e94f4;
+    ;
+    background-color: #1e94f4;
+     !important;
+    color: #1e94f4;
+    ;
+}
+
+.panel-heading {
+    color: #fff !important;
+    background-color: #1e94f4 !important;
+    padding: 25px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.panel-body {
+    height: 200px;
+}
+
+.panel-footer {
+    background-color: #fff !important;
+}
+
+.panel-footer h3 {
+    font-size: 32px;
+}
+
+.panel-footer h4 {
+    color: #aaa;
+    font-size: 14px;
+}
+
+.panel-footer .btn {
+    margin: 15px 0;
+    background-color: #f4511e;
+    color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+    .col-sm-4 {
+        text-align: center;
+        margin: 25px 0;
+    }
+}
+
+.pricing-container-fluid {
+    margin-top: 120px;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.text-muted {
+    color: #fff;
+
 }

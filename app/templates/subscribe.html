@@ -1,0 +1,104 @@
+
+{% extends 'base.html' %}
+{% block container %}
+<!-- Container (Pricing Section) -->
+<body>
+<div class="pricing-container-fluid">
+    <div class="text-center">
+        <h1>Pricing</h1>
+        <h4>Choose a payment plan that works for you</h4>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 col-xs-12">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading">
+                    <h1>The 3 Day Ticket</h1>
+                </div>
+                <div class="panel-body">
+                    <br>
+
+                    <p>
+                        <strong>For occasional use, choose the 3 Day Ticket option. </strong>
+                    </p>
+                    <p>
+                        These tickets are convenient for short term users.</p>
+                    <p>
+                        You can buy a 3 Day Ticket at stations with credit card terminals.</p>
+                    <p>
+                </div>
+                <div class="panel-footer">
+                    <h3>€5</h3>
+                    <h4>per ticket</h4>
+                    <button class="btn btn-lg">Sign Up</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading">
+                    <h1>Annual Card</h1>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        <br>
+                        <strong>For frequent use, choose the annual membership</strong></p>
+                    <p>
+                        The simple and convenient way to enjoy dublinbikes all year round.</p>
+                    <p>
+                        You can enjoy all the benefits of DublinBikes at the swipe of a card. </p>
+                </div>
+                <div class="panel-footer">
+                    <h3>€25</h3>
+                    <h4>per year</h4>
+                    <button class="btn btn-lg">Sign Up</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12">
+            <div class="panel panel-default text-center">
+                <div class="panel-heading">
+                    <h1>Pricing Structure</h1>
+                </div>
+                <div class="panel-body">
+                     <br>
+                    <p>
+                        <strong>Rental Charges</strong> </p>
+                    <p>
+                        First 1/2 hour:     Free</p>
+                    <p>
+                        Up to 1 hour:       €0.50</p>
+                    <p>
+                        p to 2 hours:       €1.50</p>
+                    <p>
+                        Up to 3 hours:      €3.50</p>
+                </div>
+                <div class="panel-footer">
+                    <h3>Try is out</h3>
+                    <h4>and go for a ride!</h4>
+                    <button class="btn btn-lg">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="text-center">
+    <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a>
+    <br>
+    <br>
+        <p class="text-muted small mb-0">Copyright &copy; Dublin Bikes 2018</p>
+    </p>
+</footer>
+
+<script>
+    $(document).ready(function () {
+        // Initialize Tooltip
+        $('[data-toggle="tooltip"]').tooltip();
+    })
+</script>
+</body>
+{% endblock %}
+
+

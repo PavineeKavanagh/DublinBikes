@@ -34,6 +34,7 @@ def main():
     print('Rendering Template')
     # - Passing the list for Jinja to render
     return render_template("index.html",locs=staticStations, tB=totalBikes, tS=totalStations, mainTemp=mainTemp, mainDesc=mainDesc, mainSnow=mainSnow, mainRain=mainRain, mainWind=mainWind)
+    print("rendered")
 @app.route('/maps')
 def mapsShow():
     _mapsObj = Station()
@@ -41,6 +42,9 @@ def mapsShow():
     print(staticStations)
     _mapsObj.closeConn()
     return render_template("maps.html", locs=staticStations)
+@app.route('/subscribe')
+def subscribe():
+    return render_template("subscribe.html")
 
 if __name__=="__main__":
     print('In the app')
