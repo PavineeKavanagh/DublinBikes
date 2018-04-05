@@ -1,9 +1,8 @@
 
 {% extends 'base.html' %} 
-
 {% block container %}
-    <!-- Header -->
-    <body>
+    <html>
+    <body id="page-top">
     <header class="mainimg">
         <div class="container text-center my-auto">
             <div class="jumbotron">
@@ -121,9 +120,6 @@
             <button type="button" class="btn btn-primary" id="btnBooking" onclick="window.location.href='{{ url_for('mapsShow') }}';">Book a Bike</button>
         </div>
     </section>
-
-
-
     
         <!-- Scripts for Map -->
 
@@ -140,6 +136,8 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-QM6kmMT69XX3uQsuhP260P7dUvZ3M2I&callback=initMap" async defer>
         </script>
 </body>
-
+</html>
 {% endblock %}
+
+
 

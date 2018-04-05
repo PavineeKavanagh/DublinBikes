@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block container %}
-<body>
+<body id="page-top">
 <header>
     <div class="text-center my-auto">
         <div class="jumbotron" id="MapFull" style="padding-top:0px; margin-top:80px; margin-bottom:0px;padding-bottom:0px">
@@ -12,7 +12,7 @@
     </div>
 </header>
 <script>
-    var locations = {{locs | safe }};
+            var locations = {{ locs | safe }};
 </script>
 <script src="../static/js/javascript.js"></script>
 
