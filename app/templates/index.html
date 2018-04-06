@@ -201,9 +201,9 @@
     
         <!-- Scripts for Map -->
 
-        <script>
+        <script type="text/javascript">
           var locations = {{ locs| safe }};
-
+          $SCRIPT_ROOT = {{request.script_root|tojson|safe}};
         </script>
         <script src="../static/js/javascript.js"></script>
         <script src="../static/js/js.js"></script>

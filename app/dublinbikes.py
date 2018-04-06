@@ -1,6 +1,7 @@
 from flask import render_template
 from app import app
 from flask import json
+from flask import jsonify
 from app.Stations import Station
 import mysql.connector
 from mysql.connector import errorcode
@@ -31,18 +32,23 @@ def main():
     coordinates=[]
     totalBikes = statDetails[0]['tBikes']
     totalStations = statDetails[0]['tStations']
-    print('Rendering Template')
+    # print('Rendering Template')
     # - Passing the list for Jinja to render
     return render_template("index.html",locs=staticStations, tB=totalBikes, tS=totalStations, mainTemp=mainTemp, mainDesc=mainDesc, mainSnow=mainSnow, mainRain=mainRain, mainWind=mainWind)
+
+
 @app.route('/maps')
 def mapsShow():
-    _mapsObj = Station()
-    staticStations = _mapsObj.getStation()
-    print(staticStations)
-    _mapsObj.closeConn()
-    return render_template("maps.html", locs=staticStations, flag="True")
+    return render_template("stations.html")
+
+
+@app.route('/stations')
+def getStations():
+    _stations = Station()
+    stations = _stations.getStation()
+    _stations.closeConn()
+    return jsonify(stations=stations)
 
 if __name__=="__main__":
-    print('In the app')
     main()
 
