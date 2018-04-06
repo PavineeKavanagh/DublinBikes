@@ -1,3 +1,4 @@
+<<<<<<< HEAD:app/templates/stations.html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,12 +53,44 @@
                     <div id="map" style="height:700px">
 
                     </div>
+=======
+{% extends 'base.html' %}
+{% block container %}
+<body id="page-top">
+<header>
+    <div class="text-center my-auto">
+        <div class="jumbotron" id="MapFull" style="padding-top:0px; margin-top:80px; margin-bottom:0px;padding-bottom:0px">
+            <div style=>
+                <div id="map" style="height:700px">
+>>>>>>> weatherdetails:app/templates/maps.html
                 </div>
             </div>
+        </div>
     </div>
+<<<<<<< HEAD:app/templates/stations.html
     </header>
     <script type="text/javascript" src="{{ url_for('static', filename='js/javascript_new.js') }}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-QM6kmMT69XX3uQsuhP260P7dUvZ3M2I&callback=initMap" async
         defer>
     </script>
 </body>
+=======
+</header>
+<script>
+            var locations = {{ locs | safe }};
+</script>
+<script src="../static/js/javascript.js"></script>
+
+
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+
+
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/javascript.js') }}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-QM6kmMT69XX3uQsuhP260P7dUvZ3M2I&callback=initMap" async
+    defer>
+</script>
+</body>
+{% endblock %}
+
+>>>>>>> weatherdetails:app/templates/maps.html

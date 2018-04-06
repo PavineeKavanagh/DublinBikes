@@ -1,4 +1,8 @@
-
+$(document).ready(function () {
+    if (window.location.href.indexOf("maps") > -1) {
+        alert("your url contains the name maps");
+    }
+});
 function initMap() {
     var flag;
     if (window.location.href.indexOf("maps") > -1) {
@@ -143,7 +147,7 @@ function initMap() {
     titleVal = '';
     var infowindow = new google.maps.InfoWindow();
     for (var i = 0; i < locations.length; i++) {
-        if (locations[i].Status == 'OPEN'){
+        if (locations[i].Status == 'OPEN') {
             var bikePercent = (locations[i].availableBikes / locations[i].TotalStands); // --------- Calculating the percentage of number of bikes in each stand
             // console.log(bikePercent+' '+i);
             if (bikePercent <= 0.25) {
@@ -184,7 +188,7 @@ function initMap() {
                 infowindow.open(map, marker);
             }
         })(marker, i));
-        }
+    }
     // var markerCluster = new MarkerClusterer(map, markers,
     //     { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
 }

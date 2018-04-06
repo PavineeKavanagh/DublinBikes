@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<!-- Base template where we can structure the basic layout of our site along with the header and footer. -->
+<html lang="en">
+    <head>
+        <!-- Viewport meta tags using "width=device-width" cause the page to scale down to fit content that overflows the viewport bounds. -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="A webpage for DublinBikes">
+        <meta name="authors" content="Elena, Harsh, Pavinee, Ying">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+        <title> Dublin Bikes </title>
+    </head>
+<body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ url_for('main')}}">L O G O </a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="{{ url_for('main')}}">HOME</a>
+                        </li>
+                        <li>
+                            <a class="js-scroll-trigger" href="{{ url_for('mapsShow') }}">STATION MAP</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('subscribeShow') }}">SUBSCRIBE</a>
+                        </li>
+                        <li>
+                            <a href="">PREDICT</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        {% block container %}
+        
+        {% endblock %}
+        <footer class="text-center">
+            <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+                <span class="glyphicon glyphicon-chevron-up"></span>
+            </a>
+            <br>
+            <br>
+            <p>Dublin Bikes
+            </p>
+        </footer>
+        <script src="{{ url_for('static', filename='js/javascript.js') }}"></script>
+    </body>
+</html>
