@@ -34,7 +34,6 @@ def main():
     # - Passing the list for Jinja to render
     return render_template("index.html",locs=staticStations, tB=totalBikes, tS=totalStations, mainTemp=mainTemp, mainDesc=mainDesc, mainSnow=mainSnow, mainRain=mainRain, mainWind=mainWind)
 
-<<<<<<< HEAD
 
 @app.route('/maps')
 def mapsShow():
@@ -47,19 +46,10 @@ def getStations():
     stations = _stations.getStation()
     _stations.closeConn()
     return jsonify(stations=stations)
-=======
-@app.route('/maps')
-def mapsShow():
-    _mapsObj = Station()
-    staticStations = _mapsObj.getStation()
-    print(staticStations)
-    _mapsObj.closeConn()
-    return render_template("maps.html", locs=staticStations, flag="True")
 
 @app.route('/subscribe')
 def subscribeShow():
     return render_template("subscribe.html")
->>>>>>> weatherdetails
 
 if __name__=="__main__":
     main()

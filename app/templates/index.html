@@ -1,38 +1,7 @@
 {% extends 'base.html' %} {% block container %}
 
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">L O G O </a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="nav-item active">
-                        <a href="{{ url_for('main') }}">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="js-scroll-trigger" href="#Maps">STATION MAP</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ url_for('mapsShow') }}">BOOK A BIKE</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#Subscribe">ABOUT</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#Predict">SUBSCRIBE</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    
 
     <!-- Header -->
     <header class="mainimg">
@@ -154,12 +123,7 @@
         </div>
     </section>
         <!-- Scripts for Map -->
-<<<<<<< HEAD
-
-        <script type="text/javascript">
-=======
         <script>
->>>>>>> weatherdetails
           var locations = {{ locs| safe }};
           $SCRIPT_ROOT = {{request.script_root|tojson|safe}};
         </script>
