@@ -1,7 +1,7 @@
 # Downloads data from JCDeacaux and loads it into Mysql database
 
-from mysql.connector import errorcode
 import mysql.connector
+from mysql.connector import errorcode
 import requests
 import json
 import time

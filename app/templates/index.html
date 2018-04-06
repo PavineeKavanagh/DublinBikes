@@ -1,8 +1,40 @@
+{% extends 'base.html' %} {% block container %}
 
-{% extends 'base.html' %} 
-{% block container %}
-    <html>
-    <body>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">L O G O </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item active">
+                        <a href="{{ url_for('main') }}">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="js-scroll-trigger" href="#Maps">STATION MAP</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('mapsShow') }}">BOOK A BIKE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#Subscribe">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#Predict">SUBSCRIBE</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
     <header class="mainimg">
         <div class="container text-center my-auto">
             <div class="jumbotron">
@@ -31,9 +63,8 @@
     </section>
 
     <!-- Map -->
+    <!-- Map -->
     <section id="Maps" class="map">
-        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-
         <div id="map">
         </div>
         <div id="weatherOver">
@@ -95,6 +126,8 @@
                         </div>
                     </div>
                 </div>
+    
+    
             </div>
         </div>
         <div id="descOver">
@@ -120,24 +153,19 @@
             <button type="button" class="btn btn-primary" id="btnBooking" onclick="window.location.href='{{ url_for('mapsShow') }}';">Book a Bike</button>
         </div>
     </section>
-    
         <!-- Scripts for Map -->
-
         <script>
           var locations = {{ locs| safe }};
         </script>
         <script src="../static/js/javascript.js"></script>
         <script src="../static/js/js.js"></script>
-
-
         <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
         </script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/javascript.js') }}"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-QM6kmMT69XX3uQsuhP260P7dUvZ3M2I&callback=initMap" async defer>
         </script>
+
 </body>
-</html>
+
 {% endblock %}
-
-
 
