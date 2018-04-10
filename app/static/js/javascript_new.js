@@ -10,7 +10,6 @@ function initMap() {
 }
 
 $( document ).ready(function () {
-    alert('Inside again')
     var jqxhr = $.getJSON("/stations", function (data) {
         var stations = data.stations;
         // console.log('stations', stations);
@@ -72,7 +71,8 @@ $( document ).ready(function () {
                     '</div >' + '</div>';
             }
             google.maps.event.addListener(marker, 'click', (function (marker) {
-                return function () {
+                return function () {    
+                    drawChart(this, contentString, station.StationNum);
                     infowindow.setContent(contentString);
                     infowindow.open(map, marker);   
                 }
@@ -83,5 +83,16 @@ $( document ).ready(function () {
     .fail(function () {
         console.log("error");
     })
-
+    
 })
+
+function drawChart(marker, contentString, station_id) {
+    var jqxhr = $.getJSON("/stations/" + station_id, function (data) {
+        console.log(data.stationsId);
+    });
+
+
+}
+
+
+

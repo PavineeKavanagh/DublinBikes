@@ -65,6 +65,23 @@ class Station():
         
         return self.__stations
 
+    def getStationsById(self,station_num):
+        """This method will call the database for static station data"""
+
+        # Query to get the station data from the static table
+        query = ("select round(avg(A.station_available_bikes)), A.hours from (select *, hour(station_data_LUD) as hours from jcdecaux_dublin_bikes_stations_dump where date(station_data_LUD)=subdate((select distinct date(station_data_LUD) from jcdecaux_live_data), 1) and station_number= %(number)s) A where A.hours >= 6 and A.hours <= 17 group by A.hours")
+        try:
+            # -------- Execute on database and return values in cursor
+            self.__cursor.execute(query, params={"number": int(station_num)})
+        except mysql.connector.Error as err:
+            print("Could not retrieve stations by id, Error: {}".format(err))
+
+        # Creating a list for the returned stations
+        for i in self.__cursor:
+            station = dict(availableBikes=int(i[0]), time=int(i[1]))
+            self.__stations.append(station)
+        return self.__stations
+
     def getAllDetails(self):
 
         """This method provides total bikes and stands information"""

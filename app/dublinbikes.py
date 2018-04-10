@@ -47,6 +47,14 @@ def getStations():
     _stations.closeConn()
     return jsonify(stations=stations)
 
+
+@app.route('/stations/<int:station_id>')
+def getStationsById(station_id):
+    _stations = Station()
+    stationsId = _stations.getStationsById(station_id)
+    _stations.closeConn()
+    return jsonify(stationsId=stationsId)
+
 @app.route('/subscribe')
 def subscribeShow():
     return render_template("subscribe.html")
