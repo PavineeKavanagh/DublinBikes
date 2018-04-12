@@ -32,7 +32,7 @@ def main():
     totalStations = statDetails[0]['tStations']
     # print('Rendering Template')
     # - Passing the list for Jinja to render
-    return render_template("index.html",locs=staticStations, tB=totalBikes, tS=totalStations, mainTemp=mainTemp, mainDesc=mainDesc, mainSnow=mainSnow, mainRain=mainRain, mainWind=mainWind)
+    return render_template("nindex.html",locs=staticStations, tB=totalBikes, tS=totalStations, mainTemp=mainTemp, mainDesc=mainDesc, mainSnow=mainSnow, mainRain=mainRain, mainWind=mainWind)
 
 
 @app.route('/maps')

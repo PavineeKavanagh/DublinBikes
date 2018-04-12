@@ -1,0 +1,106 @@
+{% extends 'base.html' %} {% block container %}
+
+<body style="overflow: hidden">
+
+    <header>
+        <div class="containermain text-center">
+            <div class="jumbotron">
+            <h1 class="dbText" style="color:#FFF">Dublin Bikes</h1>
+            <h3>
+              <em>Station Maps for Dublin Bikes</em>
+            </h3>
+             <a class="btn btn-primary btn-xl js-scroll-trigger" href="#Maps">Find Out More</a>
+            </div>
+        </div>
+    </header>
+
+<div class="container-fluid">
+    <div id="weatherOver">
+        <div class="MapOverTitle">
+            <div class="MainTitle">Check the weather before you book</div>
+            {% if mainDesc == 'Rain'%}
+            <div class="Title" id="weatherTitle">
+                <div class="values">
+                    <i class="fas fa-tint" style="color: #4FC3F7"></i>
+                </div>{{mainDesc}}</div>
+            {% endif %} {% if mainDesc == 'Sun'%}
+            <div class="Title" id="weatherTitle">
+                <div class="values">
+                    <i class="fas fa-sun" style="color: #FFEB3B"></i>
+                </div>{{mainDesc}}</div>
+            {% endif %} {% if mainDesc == 'Clouds'%}
+            <div class="Title" id="weatherTitle">
+                <div class="values">
+                    <i class="fas fa-cloud" style="color: #4FC3F7"></i>
+                </div>{{mainDesc}}</div>
+            {% endif %} {% if mainDesc == 'Snow'%}
+            <div class="Title" id="weatherTitle">
+                <div class="values">
+                    <i class="fas fa-snowflake" style="color: #4FC3F7"></i>
+                </div>{{mainDesc}}</div>
+            {% endif %} {% if mainDesc == 'Extreme'%}
+            <div class="Title" id="weatherTitle">
+                <div class="values">
+                    <i class="fas fa-tint" style="color: #4FC3F7"></i>
+                </div>{{mainDesc}}</div>
+            {% endif %}
+            <div class="mainDetails">
+                <div class="subDetails">
+                    <div class="Num">
+                        <div class="values" style="font-size:1rem">
+                            Temp:
+                        </div>
+                        <div class="values1" style="font-size:1rem">{{mainTemp}}</div>
+                    </div>
+                    <div class="Num">
+                        <div class="values" style="font-size:1rem">
+                            Rain:
+                        </div>
+                        <div class="values1" style="font-size:1rem">{{mainRain}}</div>
+                    </div>
+                </div>
+                <div class="subDetails">
+                    <div class="Num">
+                        <div class="values" style="font-size:1rem">
+                            Snow:
+                        </div>
+                        <div class="values1" style="font-size:1rem">{{mainSnow}}</div>
+                    </div>
+                    <div class="Num">
+                        <div class="values" style="font-size:1rem">
+                            Winds:
+                        </div>
+                        <div class="values1" style="font-size:1rem">{{mainWind}}</div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<div id="descOver">
+    <div class="MapOverTitle">
+        <div class="MainTitle">Dublin Bikes Strength</div>
+        <div class="Title">Total Bikes</div>
+        <div class="Num">
+            <div class="values">
+                <i class="fas fa-bicycle"></i>
+            </div>
+            <div class="values">{{tB}}</div>
+        </div>
+        <div class="Title">Total Stations</div>
+        <div class="Num">
+            <div class="values">
+                <i class="far fa-flag"></i>
+            </div>
+            <div class="values">{{tS}}</div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+{% endblock %}
