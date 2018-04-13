@@ -59,6 +59,10 @@ def getStationsById(station_id):
 def subscribeShow():
     return render_template("subscribe.html")
 
+@app.route('/predict')
+def showForecast():
+    return render_template("predict.html")
+
 if __name__=="__main__":
     main()
 

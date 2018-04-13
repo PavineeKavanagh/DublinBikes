@@ -14,6 +14,7 @@
 
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.min.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <title> Dublin Bikes </title>
@@ -39,11 +40,12 @@
                             <a class="js-scroll-trigger" href="{{ url_for('mapsShow') }}">STATION MAP</a>
                         </li>
                         <li>
-                            <a href="{{ url_for('subscribeShow') }}">SUBSCRIBE</a>
+                            <a href="{{ url_for('showForecast')}}">PREDICT</a>
                         </li>
                         <li>
-                            <a href="">PREDICT</a>
+                            <a href="{{ url_for('subscribeShow') }}">SUBSCRIBE</a>
                         </li>
+
                     </ul>
                 </div>
             </div>
@@ -52,9 +54,7 @@
         
         {% endblock %}
         <footer class="text-center">
-            <a class="up-arrow">
-                <span class="fa fa-bicycle"></span>
-            </a>
+            <span class="fa fa-bicycle"></span>
             <br>
             <br>
             <p>Dublin Bikes
