@@ -1,13 +1,4 @@
-html {
-    box-sizing: border-box;
-    height: 100%;
-}
 
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
-}
 
 h1,
 h2,
@@ -67,7 +58,7 @@ body {
 
 .jumbotron {
     background-color: transparent;
-    margin-top: 200px;
+    margin-top: 300px;
 }
 
 .text-center {
@@ -83,7 +74,8 @@ body {
     position: relative;
     display: table;
     width: 100%;
-    height: 1000%;
+    height: 1000px;
+    background-color: #25D8B5;
     padding-top: 8rem;
     padding-bottom: 8rem;
     background-position: center center;
@@ -113,7 +105,6 @@ em {
 
 .dbText {
     padding-top: 60px;
-    font-size: 50px;
     margin-bottom: 0.25rem !important;
 }
 
@@ -158,10 +149,10 @@ h6 {
 /* Nav-bar link colour */
 
 .navbar li a,
-.navbar .navbar-brand {
+.navbar .navbar-brand .navbar-header {
     color: #dddddd !important;
     margin-top: 15px;
-    margin-right: 20px;
+    margin-right: 40px;
     padding-bottom: 0px;
 }
 
@@ -538,7 +529,7 @@ footer {
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 110px;
+    height: 80px;
     width: 100%;
     overflow: hidden;
     opacity: 0.9;
