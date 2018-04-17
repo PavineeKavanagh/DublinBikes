@@ -1,190 +1,116 @@
-
+// Get the map
 function initMap() {
-    var flag;
-    if (window.location.href.indexOf("maps") > -1) {
-        flag = "true";
-    }
     var mapOptions = {
         zoom: 15,
         center: { 'lat': 53.346973, 'lng': -6.256796 },
-        // styles: [
-        //     { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
-        //     { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
-        //     { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
-        //     {
-        //         featureType: 'administrative.locality',
-        //         elementType: 'labels.text.fill',
-        //         stylers: [{ color: '#d59563' }]
-        //     },
-        //     {
-        //         featureType: 'poi',
-        //         elementType: 'labels.text.fill',
-        //         stylers: [{ color: '#d59563' }]
-        //     },
-        //     {
-        //         featureType: 'poi.park',
-        //         elementType: 'geometry',
-        //         stylers: [{ color: '#263c3f' }]
-        //     },
-        //     {
-        //         featureType: 'poi.park',
-        //         elementType: 'labels.text.fill',
-        //         stylers: [{ color: '#6b9a76' }]
-        //     },
-        //     {
-        //         featureType: 'road',
-        //         elementType: 'geometry',
-        //         stylers: [{ color: '#38414e' }]
-        //     },
-        //     {
-        //         featureType: 'road',
-        //         elementType: 'geometry.stroke',
-        //         stylers: [{ color: '#212a37' }]
-        //     },
-        //     {
-        //         featureType: 'road',
-        //         elementType: 'labels.text.fill',
-        //         stylers: [{ color: '#9ca5b3' }]
-        //     },
-        //     {
-        //         featureType: 'road.highway',
-        //         elementType: 'geometry',
-        //         stylers: [{ color: '#746855' }]
-        //     },
-        //     {
-        //         featureType: 'road.highway',
-        //         elementType: 'geometry.stroke',
-        //         stylers: [{ color: '#1f2835' }]
-        //     },
-        //     {
-        //         featureType: 'road.highway',
-        //         elementType: 'labels.text.fill',
-        //         stylers: [{ color: '#f3d19c' }]
-        //     },
-        //     {
-        //         featureType: 'transit',
-        //         elementType: 'geometry',
-        //         stylers: [{ color: '#2f3948' }]
-        //     },
-        //     {
-        //         featureType: 'transit.station',
-        //         elementType: 'labels.text.fill',
-        //         stylers: [{ color: '#d59563' }]
-        //     },
-        //     {
-        //         featureType: 'water',
-        //         elementType: 'geometry',
-        //         stylers: [{ color: '#17263c' }]
-        //     },
-        //     {
-        //         featureType: 'water',
-        //         elementType: 'labels.text.fill',
-        //         stylers: [{ color: '#515c6d' }]
-        //     },
-        //     {
-        //         featureType: 'water',
-        //         elementType: 'labels.text.stroke',
-        //         stylers: [{ color: '#17263c' }]
-        //     }
-        // ]
-    }
-
+    }                                                                       // ----- Get the optional values for the Map
     // Setting the map
-    map = new google.maps.Map(document.getElementById("map"), mapOptions);
-    // Changing the icons for the markers
-    //Marker for each one
-    var markers = [];
-    var infowindows = [];
-    var infowindowcontent = [];
-    for (var i = 0; i < locations.length; i++) {
-        if (flag=="true"){
-            if ((locations[i].Status == 'OPEN') && (locations[i].availableBikes>0)) {
-                var contentString = '<div id="content">' +
-                    '<div id = "content-station" >' + locations[i].StationName +
-                    '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Bikes:</span><span id="contentNum">' +
-                    locations[i].availableBikes + '</span></div>' + '<div class="column"><span id="contentHolder">Stands:</span><span id="contentNum">' +
-                    locations[i].availableStands + '</span></div>' + '</div id="bookButton"><buttontype="button" class="btn btn-primary" style="margin-top:0px">Get a Bike</button></div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + locations[i].LUD + '</div>' +
-                    '</div >' + '</div>';
-            } else if ((locations[i].Status == 'OPEN') && (locations[i].availableBikes == 0)){
-                var contentString = '<div id="content">' +
-                    '<div id = "content-station" >' + locations[i].StationName +
-                    '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Bikes:</span><span id="contentNum">' +
-                    locations[i].availableBikes + '</span></div>' + '<div class="column"><span id="contentHolder">Stands:</span><span id="contentNum">' +
-                    locations[i].availableStands + '</span></div>' + '</div id="bookButton"><buttontype="button" class="btn btn-secondary disabled" style="margin-top:0px" aria-disabled="true">Get a Bike</button></div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + locations[i].LUD + '</div>' +
-                    '</div >' + '</div>';
-            } else {
-                var contentString = '<div id="content">' +
-                    '<div id = "content-station" >' + locations[i].StationName +
-                    '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Station Closed</span></div>' +
-                    '</div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + locations[i].LUD + '</div>' +
-                    '</div >' + '</div>';
-            }
-        } else {
-            if (locations[i].Status == 'OPEN') {
-                var contentString = '<div id="content">' +
-                    '<div id = "content-station" >' + locations[i].StationName +
-                    '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Bikes:</span><span id="contentNum">' +
-                    locations[i].availableBikes + '</span></div>' + '<div class="column"><span id="contentHolder">Stands:</span><span id="contentNum">' +
-                    locations[i].availableStands + '</span></div>' + '</div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + locations[i].LUD + '</div>' +
-                    '</div >' + '</div>';
-            } else {
-                var contentString = '<div id="content">' +
-                    '<div id = "content-station" >' + locations[i].StationName +
-                    '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Station Closed</span></div>' +
-                    '</div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + locations[i].LUD + '</div>' +
-                    '</div >' + '</div>';
-            }
-        }
-        infowindowcontent.push(contentString);
-    }
-
-    var iconbase = '';
-    var latLng = {};
-    titleVal = '';
-    var infowindow = new google.maps.InfoWindow();
-    for (var i = 0; i < locations.length; i++) {
-        if (locations[i].Status == 'OPEN') {
-            var bikePercent = (locations[i].availableBikes / locations[i].TotalStands); // --------- Calculating the percentage of number of bikes in each stand
-            // console.log(bikePercent+' '+i);
-            if (bikePercent <= 0.25) {
-                // console.log("Less than 25%"+i);
-                // RED MARKER
-                iconbase = 'static/img/marker_red.png';
-                latLng = { lat: locations[i].Latitude, lng: locations[i].Longitude };
-                titleVal = locations[i].StationName;
-            } else if ((bikePercent > 0.25) && (bikePercent < 0.75)) {
-                // console.log("Greater than 25%"+i);
-                // ORANGE MARKER
-                iconbase = 'static/img/marker_orange.png';
-                latLng = { lat: locations[i].Latitude, lng: locations[i].Longitude };
-                titleVal = locations[i].StationName;
-            } else {
-                // console.log("Greater than 75%"+i);
-                // GREEN MARKER
-                iconbase = 'static/img/marker_green.png';
-                latLng = { lat: locations[i].Latitude, lng: locations[i].Longitude };
-                titleVal = locations[i].StationName;
-            }
-        } else {
-            iconbase = 'static/img/marker_gray.png';
-            latLng = { lat: locations[i].Latitude, lng: locations[i].Longitude };
-            titleVal = locations[i].StationName;
-        }
-        var marker = new google.maps.Marker({
-            position: latLng,
-            icon: iconbase,
-            map: map,
-            title: titleVal
-        });
-        // markers.push(marker);
-        // The below code is referred from stack overflow
-        google.maps.event.addListener(marker, 'click', (function (marker, i) {
-            return function () {
-                infowindow.setContent(infowindowcontent[i]);
-                infowindow.open(map, marker);
-            }
-        })(marker, i));
-    }
-    // var markerCluster = new MarkerClusterer(map, markers,
-    //     { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+    map = new google.maps.Map(document.getElementById("map"), mapOptions); // ------ Populate the map
+    
 }
+
+$( document ).ready(function () {
+    
+    var jqxhr = $.getJSON("/stations", function (data) {
+        var stations = data.stations;
+        // console.log('stations', stations);
+        // Plotting the markers
+        var infowindow = new google.maps.InfoWindow();
+        _.forEach(stations,function(station) {
+            if (station.Status == 'OPEN') {
+                var bikePercent = (station.availableBikes / station.TotalStands); // --------- Calculating the percentage of number of bikes in each stand
+                // console.log(bikePercent+' '+i);
+                if (bikePercent <= 0.25) {
+                    // console.log("Less than 25%"+i);
+                    // RED MARKER
+                    iconbase = 'static/img/marker_red.png';
+                    latLng = { lat: station.Latitude, lng: station.Longitude };
+                    titleVal = station.StationName;
+                } else if ((bikePercent > 0.25) && (bikePercent < 0.75)) {
+                    // console.log("Greater than 25%"+i);
+                    // ORANGE MARKER
+                    iconbase = 'static/img/marker_orange.png';
+                    latLng = { lat: station.Latitude, lng: station.Longitude };
+                    titleVal = station.StationName;
+                } else {
+                    // console.log("Greater than 75%"+i);
+                    // GREEN MARKER
+                    iconbase = 'static/img/marker_green.png';
+                    latLng = { lat: station.Latitude, lng: station.Longitude };
+                    titleVal = station.StationName;
+                }
+            } else {
+                iconbase = 'static/img/marker_gray.png';
+                latLng = { lat: station.Latitude, lng: station.Longitude };
+                titleVal = station.StationName;
+            }
+            var marker = new google.maps.Marker({
+                position: { lat: station.Latitude, lng: station.Longitude },
+                map: map,
+                icon: iconbase,
+                title: station.StationName,
+                number: station.StationNum,
+                status: station.Status,
+                availableBikes: station.availableBikes,
+                availableStands: station.availableStands,
+                lud: station.LUD
+            });            
+            google.maps.event.addListener(marker, 'click', (function (marker) {
+                return function () { 
+                        drawChart(marker);
+                        var availability = station.availability;
+                        var lud = station.lud;
+                        var contentString = '<div id="content">' +
+                            '<div id = "content-station" >' + marker.title +
+                            '<div>Status: ' + marker.status +'</div></div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Bikes:</span><span id="contentNum">' +
+                            marker.availableBikes + '</span></div>' + '<div class="column"><span id="contentHolder">Stands:</span><span id="contentNum">' +
+                            marker.availableStands + '</span></div>' + '</div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + (marker.lud) + '</div>' +
+                            '</div >' + '</div>';
+                        infowindow.setContent(contentString);
+                        infowindow.open(map, marker);   
+                }
+            })(marker));
+            function drawChart(marker) {
+                var divElem = document.getElementById("weatherOver");
+                divElem.style.display="block";
+                var jqxhr = $.getJSON("/stations/" + marker.number, function (data) {
+                    console.log(data.stationsId);
+                    var newdata = data.stationsId;
+                    var node = divElem;
+                    chart = new google.visualization.ColumnChart(node);
+
+                    var chart_data = new google.visualization.DataTable();
+                    chart_data.addColumn('datetime','Time of Day');
+                    chart_data.addColumn('number','Available Bikes');
+                    _.forEach(newdata, function(row){
+                        chart_data.addRow([new Date(row.time),row.availableBikes]);
+                    });
+                    var options = {
+                        title: 'Popularity Chart',
+                        colors: ['#9575cd','#33ac71'],
+                        hAxis: {
+                            title: 'Time of Day',
+                            format: "HH:mm",
+                            slantedText: true,
+                            slantedTextAngle: 30,
+                        },
+                        vAxis: {
+                            title: 'Average Number of Bikes'
+                        }
+                    };
+                    chart.draw(chart_data, options);
+                });
+            } google.charts.load('current', { 'packages': ['table', 'map', 'corechart'] });
+            
+        });
+    })
+    .fail(function () {
+        console.log("error");
+    })
+     
+})
+
+
+
+
+
