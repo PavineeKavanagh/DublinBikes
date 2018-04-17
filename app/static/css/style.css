@@ -649,14 +649,19 @@ a:active {
     color: #ffffff;
 }
 
-.fa-bicycle {
-    margin-top: 0px;
-    font-size: 2em;
+.fa-facebook {
+    margin-top: 2px;
+    font-size: 1.5em;
 }
 
 .fa-github {
-    margin-top: 0px;
-    font-size: 2em;
+    margin-top: 2px;
+    font-size: 1.5em;
+}
+
+.fa-twitter {
+    margin-top: 2px;
+    font-size: 1.5em;
 }
 
 @media screen and (max-width: 768px) {
@@ -1050,6 +1055,10 @@ hr {
 /*--------------------------------------------FrameWork------------------------*/
 
 /* predict page */
+
+.carousel {
+    margin-top: 500px;
+}
 
 .carousel-control.right,
 .carousel-control.left {
