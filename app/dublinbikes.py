@@ -22,6 +22,7 @@ def main():
     weatherDetails = _stations.getWeather()
     _stations.closeConn()
     print('Connections Closed')
+    print(weatherDetails)
     mainTemp = weatherDetails[0]['temp']
     mainDesc = weatherDetails[0]['wDes']
     mainSnow = weatherDetails[0]['wSnow']
@@ -58,6 +59,10 @@ def getStationsById(station_id):
 @app.route('/subscribe')
 def subscribeShow():
     return render_template("subscribe.html")
+
+@app.route('/predict')
+def showForecast():
+    return render_template("predict.html")
 
 if __name__=="__main__":
     main()
