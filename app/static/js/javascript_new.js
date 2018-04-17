@@ -17,9 +17,37 @@ $( document ).ready(function () {
         // Plotting the markers
         var infowindow = new google.maps.InfoWindow();
         _.forEach(stations,function(station) {
+            if (station.Status == 'OPEN') {
+                var bikePercent = (station.availableBikes / station.TotalStands); // --------- Calculating the percentage of number of bikes in each stand
+                // console.log(bikePercent+' '+i);
+                if (bikePercent <= 0.25) {
+                    // console.log("Less than 25%"+i);
+                    // RED MARKER
+                    iconbase = 'static/img/marker_red.png';
+                    latLng = { lat: station.Latitude, lng: station.Longitude };
+                    titleVal = station.StationName;
+                } else if ((bikePercent > 0.25) && (bikePercent < 0.75)) {
+                    // console.log("Greater than 25%"+i);
+                    // ORANGE MARKER
+                    iconbase = 'static/img/marker_orange.png';
+                    latLng = { lat: station.Latitude, lng: station.Longitude };
+                    titleVal = station.StationName;
+                } else {
+                    // console.log("Greater than 75%"+i);
+                    // GREEN MARKER
+                    iconbase = 'static/img/marker_green.png';
+                    latLng = { lat: station.Latitude, lng: station.Longitude };
+                    titleVal = station.StationName;
+                }
+            } else {
+                iconbase = 'static/img/marker_gray.png';
+                latLng = { lat: station.Latitude, lng: station.Longitude };
+                titleVal = station.StationName;
+            }
             var marker = new google.maps.Marker({
                 position: { lat: station.Latitude, lng: station.Longitude },
                 map: map,
+                icon: iconbase,
                 title: station.StationName,
                 number: station.StationNum,
                 status: station.Status,
@@ -34,9 +62,9 @@ $( document ).ready(function () {
                         var lud = station.lud;
                         var contentString = '<div id="content">' +
                             '<div id = "content-station" >' + marker.title +
-                            '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Bikes:</span><span id="contentNum">' +
+                            '<div>Status: ' + marker.status +'</div></div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Bikes:</span><span id="contentNum">' +
                             marker.availableBikes + '</span></div>' + '<div class="column"><span id="contentHolder">Stands:</span><span id="contentNum">' +
-                            marker.availableStands + '</span></div>' + '</div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + new Date(marker.lud) + '</div>' +
+                            marker.availableStands + '</span></div>' + '</div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + (marker.lud) + '</div>' +
                             '</div >' + '</div>';
                         infowindow.setContent(contentString);
                         infowindow.open(map, marker);   
@@ -58,16 +86,16 @@ $( document ).ready(function () {
                         chart_data.addRow([new Date(row.time),row.availableBikes]);
                     });
                     var options = {
-                        title: 'Available Bikes',
+                        title: 'Popularity Chart',
                         colors: ['#9575cd','#33ac71'],
                         hAxis: {
                             title: 'Time of Day',
-                            format: "E HH:mm",
+                            format: "HH:mm",
                             slantedText: true,
                             slantedTextAngle: 30,
                         },
                         vAxis: {
-                            title: '#'
+                            title: 'Average Number of Bikes'
                         }
                     };
                     chart.draw(chart_data, options);

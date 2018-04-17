@@ -340,11 +340,11 @@ a:active {
 #weatherOver {
     display: none;
     position: absolute;
-    top: 75px;
+    top: 100px;
     right: 40px;
     z-index: 99;
     height: 280px;
-    width: 360px;
+    width: 400px;
     border-radius: 10px;
     box-shadow: 2px 2px #DDD;
     background: #FAFAFA;

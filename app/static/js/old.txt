@@ -1,0 +1,21 @@
+if ((station.Status == 'OPEN') && (station.availableBikes > 0)) {
+                contentString = '<div id="content">' +
+                    '<div id = "content-station" >' + station.StationName +
+                    '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Bikes:</span><span id="contentNum">' +
+                    station.availableBikes + '</span></div>' + '<div class="column"><span id="contentHolder">Stands:</span><span id="contentNum">' +
+                    station.availableStands + '</span></div>' + '</div id="bookButton"><buttontype="button" class="btn btn-primary" style="margin-top:0px">Get a Bike</button></div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + station.LUD + '</div>' +
+                    '</div >' + '</div>';
+            } else if ((station.Status == 'OPEN') && (station.availableBikes == 0)) {
+                contentString = '<div id="content">' +
+                    '<div id = "content-station" >' + station.StationName +
+                    '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Bikes:</span><span id="contentNum">' +
+                    station.availableBikes + '</span></div>' + '<div class="column"><span id="contentHolder">Stands:</span><span id="contentNum">' +
+                    station.availableStands + '</span></div>' + '</div id="bookButton"><buttontype="button" class="btn btn-secondary disabled" style="margin-top:0px" aria-disabled="true">Get a Bike</button></div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + station.LUD + '</div>' +
+                    '</div >' + '</div>';
+            } else {
+                contentString = '<div id="content">' +
+                    '<div id = "content-station" >' + station.StationName +
+                    '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Station Closed</span></div>' +
+                    '</div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + station.LUD + '</div>' +
+                    '</div >' + '</div>';
+            }
