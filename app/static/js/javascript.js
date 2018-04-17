@@ -16,6 +16,7 @@ $( document ).ready(function () {
         // console.log('stations', stations);
         // Plotting the markers
         var infowindow = new google.maps.InfoWindow();
+        var divElem = document.getElementById("weatherOver");
         _.forEach(stations,function(station) {
             if (station.Status == 'OPEN') {
                 var bikePercent = (station.availableBikes / station.TotalStands); // --------- Calculating the percentage of number of bikes in each stand
@@ -71,7 +72,6 @@ $( document ).ready(function () {
                 }
             })(marker));
             function drawChart(marker) {
-                var divElem = document.getElementById("weatherOver");
                 divElem.style.display="block";
                 var jqxhr = $.getJSON("/stations/" + marker.number, function (data) {
                     console.log(data.stationsId);
@@ -102,6 +102,10 @@ $( document ).ready(function () {
                 });
             } google.charts.load('current', { 'packages': ['table', 'map', 'corechart'] });
             
+        });
+        google.maps.event.addListener(infowindow, 'closeclick', function () {
+            divElem.style.display = "none";
+            // then, remove the infowindows name from the array
         });
     })
     .fail(function () {
