@@ -78,65 +78,7 @@
     <!-- <section id="Maps" class="map">
         <div id="map">
         </div>
-        <div id="weatherOver">
-            <div class="MapOverTitle">
-                <div class="MainTitle">Check the weather before you book</div>
-                {% if mainDesc == 'Rain'%}
-                <div class="Title" id="weatherTitle">
-                    <div class="values">
-                        <i class="fas fa-tint" style="color: #4FC3F7"></i>
-                    </div>{{mainDesc}}</div>
-                {% endif %} {% if mainDesc == 'Sun'%}
-                <div class="Title" id="weatherTitle">
-                    <div class="values">
-                        <i class="fas fa-sun" style="color: #FFEB3B"></i>
-                    </div>{{mainDesc}}</div>
-                {% endif %} {% if mainDesc == 'Clouds'%}
-                <div class="Title" id="weatherTitle">
-                    <div class="values">
-                        <i class="fas fa-cloud" style="color: #4FC3F7"></i>
-                    </div>{{mainDesc}}</div>
-                {% endif %} {% if mainDesc == 'Snow'%}
-                <div class="Title" id="weatherTitle">
-                    <div class="values">
-                        <i class="fas fa-snowflake" style="color: #4FC3F7"></i>
-                    </div>{{mainDesc}}</div>
-                {% endif %} {% if mainDesc == 'Extreme'%}
-                <div class="Title" id="weatherTitle">
-                    <div class="values">
-                        <i class="fas fa-tint" style="color: #4FC3F7"></i>
-                    </div>{{mainDesc}}</div>
-                {% endif %}
-                <div class="mainDetails">
-                    <div class="subDetails">
-                        <div class="Num">
-                            <div class="values" style="font-size:1rem">
-                                Temp:
-                            </div>
-                            <div class="values1" style="font-size:1rem">{{mainTemp}}</div>
-                        </div>
-                        <div class="Num">
-                            <div class="values" style="font-size:1rem">
-                                Rain:
-                            </div>
-                            <div class="values1" style="font-size:1rem">{{mainRain}}</div>
-                        </div>
-                    </div>
-                    <div class="subDetails">
-                        <div class="Num">
-                            <div class="values" style="font-size:1rem">
-                                Snow:
-                            </div>
-                            <div class="values1" style="font-size:1rem">{{mainSnow}}</div>
-                        </div>
-                        <div class="Num">
-                            <div class="values" style="font-size:1rem">
-                                Winds:
-                            </div>
-                            <div class="values1" style="font-size:1rem">{{mainWind}}</div>
-                        </div>
-                    </div>
-                </div>
+
     
     
             </div>
