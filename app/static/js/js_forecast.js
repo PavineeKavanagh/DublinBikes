@@ -64,8 +64,7 @@ $(document).ready(function () {
                     var contentString = '<div id="content">' +
                         '<div id = "content-station" >' + marker.title +
                         '</div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Prediction:</span><span id="contentNum">' +
-                        marker.availableBikes + '</span></div><div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + (marker.lud) + '</div>' +
-                        '</div >' + '</div>';
+                        marker.availableBikes + '</span></div><div id="content-lud">';
                     infowindow.setContent(contentString);
                     infowindow.open(map, marker);
                 }
