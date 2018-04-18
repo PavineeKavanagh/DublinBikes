@@ -1,10 +1,10 @@
-from flask import render_template
+from flask import Flask, request, render_template, json, jsonify
 from app import app
-from flask import json
-from flask import jsonify
 from app.Stations import Station
 import mysql.connector
 from mysql.connector import errorcode
+import pickle as pkl
+import pandas
 
 
 # route() decorator tells Flask what URL should trigger our function
@@ -60,9 +60,24 @@ def getStationsById(station_id):
 def subscribeShow():
     return render_template("subscribe.html")
 
-@app.route('/predict')
+@app.route('/predict',)
 def showForecast():
+    # print("Getting stations for prediction")
+    # _stations = Station()
+    # stationsId = _stations.getStationsById(station_id)
+    # _stations.closeConn()
+    # print("Creating model")
+    # model = '../model/rfc_single.pkl'
+    # pkl_rfc = pkl.load(open(model, 'rb'))
+    # prediction = pkl_rfc.predict(stationsId)
+    # print(pkl_rfc)        
+    # return render_template("predict.html", prediction = prediction)
     return render_template("predict.html")
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
 
 if __name__=="__main__":
     main()
