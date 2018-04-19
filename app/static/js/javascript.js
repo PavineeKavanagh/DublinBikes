@@ -96,7 +96,7 @@ $(document).ready(function () {
                         console.log(data.stationsId);
                         var newdata = data.stationsId;
                         var node = divElem;
-                        chart = new google.visualization.ColumnChart(node);
+                        chart = new google.visualization.SteppedAreaChart(node);
 
                         var chart_data = new google.visualization.DataTable();
                         chart_data.addColumn('datetime', 'Time of Day');
@@ -105,7 +105,7 @@ $(document).ready(function () {
                             chart_data.addRow([new Date(row.time), row.availableBikes]);
                         });
                         var options = {
-                            title: 'Popularity Chart',
+                            title: 'Popularity Chart: '+marker.title,
                             colors: ['#9575cd', '#33ac71'],
                             hAxis: {
                                 title: 'Time of Day',
