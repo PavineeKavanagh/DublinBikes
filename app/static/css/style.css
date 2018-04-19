@@ -121,6 +121,7 @@ em {
 }
 
 .dbText {
+    font-size: 4rem;
     padding-top: 30px;
     margin-bottom: 0.25rem !important;
 }
@@ -330,7 +331,7 @@ a:active {
 
 .panel-station {
     border-radius: 10px;
-    height: 450px;
+    height: auto;
     border: 2px solid #25D8B5;
     border-radius: 0;
     transition: box-shadow 0.5s;
@@ -418,7 +419,10 @@ a:active {
 }
 
 #weatherTitle {
-    font-size: 3rem;
+    font-size: 5rem;
+}
+#bikeTitle{
+    font-size: 2rem;
 }
 
 .values1 {
@@ -428,6 +432,7 @@ a:active {
 .subDetails {
     display: flex;
     flex-direction: row;
+    font-size: 5rem;
 }
 
 .col-1,
@@ -561,11 +566,9 @@ footer {
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 80px;
     width: 100%;
     overflow: hidden;
     opacity: 0.9;
-    padding: 5PX;
 }
 
 footer a p {
@@ -1121,4 +1124,24 @@ hr {
 }
 #BikePredict{
     font-size: 4rem;
+}
+
+.findMore{
+    margin: 1rem;
+    padding: 1rem;
+    background-color: #FAFAFA;
+}
+.footerElems{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#github:hover{
+    cursor: pointer;
+}
+#facebook:hover{
+    cursor: pointer;
+}
+#twitter:hover{
+    cursor: pointer;
 }
