@@ -361,7 +361,7 @@ a:active {
     box-shadow: 5px 0px 40px rgba(0, 0, 0, .2);
 }
 
-#weatherOver {
+.weatherOver {
     display: none;
     position: absolute;
     margin-top: 100px;
@@ -1096,4 +1096,29 @@ hr {
 
 .item span {
     font-style: normal;
+}
+
+#weatherOver2{
+    font-family: 'Helvetica';
+    background: white;
+}
+#bikeForecast{
+    background: white;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    padding: 20px;
+}
+
+#PredictClass{
+    padding-top: 30px;
+    font-family: 'Helvetica';
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+#BikePredict{
+    font-size: 4rem;
 }

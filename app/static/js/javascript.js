@@ -12,14 +12,18 @@ function initMap() {
 
 }
 
+var divElem = document.getElementById("weatherOver1");
+var divElem2 = document.getElementById("weatherOver2");
+var prediction;
+
 $(document).ready(function () {
 
     var jqxhr = $.getJSON("/stations", function (data) {
             var stations = data.stations;
             // console.log('stations', stations);
             // Plotting the markers
+            
             var infowindow = new google.maps.InfoWindow();
-            var divElem = document.getElementById("weatherOver");
             _.forEach(stations, function (station) {
                 if (station.Status == 'OPEN') {
                     var bikePercent = (station.availableBikes / station.TotalStands); // --------- Calculating the percentage of number of bikes in each stand
@@ -76,6 +80,8 @@ $(document).ready(function () {
                 });
                 google.maps.event.addListener(marker, 'click', (function (marker) {
                     return function () {
+                        map.setCenter(marker.getPosition());
+                        divElem2.style.display = "none";
                         drawChart(marker);
                         var availability = station.availability;
                         var lud = station.lud;
@@ -83,7 +89,7 @@ $(document).ready(function () {
                             '<div id = "content-station" >' + marker.title +
                             '<div>Status: ' + marker.status + '</div></div ><div class=content-numbers>' + '<div class="column"><span id="contentHolder">Bikes:</span><span id="contentNum">' +
                             marker.availableBikes + '</span></div>' + '<div class="column"><span id="contentHolder">Stands:</span><span id="contentNum">' +
-                            marker.availableStands + '</span></div>' + '</div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + (marker.lud) + '</div>' +
+                            marker.availableStands + '</span></div>' + '</div id="bookButton"><buttontype="button" class="btn btn-primary" style="margin-top:0px" onclick="getForecast()">Predict</button></div></div>' + '<div id="content-lud"><span style="font-weight:bold">Last Update at:</span> ' + (marker.lud) + '</div>' +
                             '</div >' + '</div>';
                         infowindow.setContent(contentString);
                         infowindow.open(map, marker);
@@ -121,6 +127,11 @@ $(document).ready(function () {
                         };
                         chart.draw(chart_data, options);
                     });
+
+                    var jqxhr2 = $.getJSON("/predict/" + marker.number, function (data1) {
+                        var data1 = data1.prediction;
+                        prediction = data1;
+                    });
                 }
                 google.charts.load('current', {
                     'packages': ['table', 'map', 'corechart']
@@ -129,12 +140,22 @@ $(document).ready(function () {
             });
             google.maps.event.addListener(infowindow, 'closeclick', function () {
                 divElem.style.display = "none";
+                divElem2.style.display = "none";
                 // then, remove the infowindows name from the array
             });
         })
         .fail(function () {
             console.log("error");
         })
+        
 
 })
 
+
+function getForecast() {
+    var date = new Date();
+    divElem.style.display = "none";
+    divElem2.style.display = "block";
+    document.getElementById("bikeForecast").innerHTML="Bikes available tomorrow at: "+date.getHours()+" : "+date.getMinutes();
+    document.getElementById("BikePredict").innerHTML=prediction;
+}
