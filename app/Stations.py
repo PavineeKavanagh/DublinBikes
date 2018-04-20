@@ -104,8 +104,7 @@ class Station():
     def getWeather(self):
 
         #Query to get the weather data
-        weatherData = (
-            "select distinct * from openweathermap_dublin_bikes_dump where weather_date=DATE(NOW()) limit 1")
+        weatherData = ("select distinct B.* from (select weather_date from openweathermap_dublin_bikes_dump where weather_date > DATE_SUB(NOW(), INTERVAL 1 DAY) ORDER BY weather_date ASC) A, openweathermap_dublin_bikes_dump B where B.weather_date=DATE_ADD(A.weather_date, INTERVAL 1 DAY) limit 1")
 
         try:
             # ------Execute on database and return values in self.__cursor
