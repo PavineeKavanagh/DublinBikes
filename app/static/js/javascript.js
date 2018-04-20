@@ -14,10 +14,11 @@ function initMap() {
 
 var divElem = document.getElementById("weatherOver1");
 var divElem2 = document.getElementById("weatherOver2");
+var loader = document.getElementById("loaderCont");
 var prediction;
 
 $(document).ready(function () {
-
+    $('#loaderCont').hide();
     var jqxhr = $.getJSON("/stations", function (data) {
             var stations = data.stations;
             // console.log('stations', stations);
@@ -82,6 +83,10 @@ $(document).ready(function () {
                     return function () {
                         map.setCenter(marker.getPosition());
                         divElem2.style.display = "none";
+                        $('#loaderCont').show();
+                        setTimeout(function () {
+                            $('#loaderCont').hide();
+                        }, 2500);
                         drawChart(marker);
                         var availability = station.availability;
                         var lud = station.lud;
@@ -98,6 +103,7 @@ $(document).ready(function () {
 
                 function drawChart(marker) {
                     divElem.style.display = "block";
+                    
                     var jqxhr = $.getJSON("/stations/" + marker.number, function (data) {
                         console.log(data.stationsId);
                         var newdata = data.stationsId;
@@ -141,6 +147,7 @@ $(document).ready(function () {
             google.maps.event.addListener(infowindow, 'closeclick', function () {
                 divElem.style.display = "none";
                 divElem2.style.display = "none";
+                loader.style.display="none";
                 // then, remove the infowindows name from the array
             });
         })
