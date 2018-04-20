@@ -3,27 +3,17 @@ Dublin Bikes
 ===========
 
 
-.. image:: https://img.shields.io/pypi/v/dublinbikes.svg
-        :target: https://pypi.python.org/pypi/dublinbikes
-
-.. image:: https://img.shields.io/travis/harshrpg/dublinbikes.svg
-        :target: https://travis-ci.org/harshrpg/dublinbikes
-
-.. image:: https://readthedocs.org/projects/dublinbikes/badge/?version=latest
-        :target: https://dublinbikes.readthedocs.io/en/latest/?badge=latest
-        :alt: Documentation Status
-
-
-
 
 Provides dublin bikes station maps and prediction
 
 Contributors:
-Harsh Gupta
-Pavinee Kavanagh
-Elena Lanigan
-Ying Huang
+Harsh Gupta,
 
+Pavinee Kavanagh,
+
+Elena Lanigan,
+
+Ying Huang.
 
 Features
 --------
