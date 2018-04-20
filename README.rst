@@ -7,12 +7,10 @@ Dublin Bikes
 Provides dublin bikes station maps and prediction
 
 Contributors:
+
 Harsh Gupta,
-
 Pavinee Kavanagh,
-
 Elena Lanigan,
-
 Ying Huang.
 
 Features
