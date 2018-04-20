@@ -1,5 +1,5 @@
 ===========
-DublinBikes
+Dublin Bikes
 ===========
 
 
@@ -18,15 +18,18 @@ DublinBikes
 
 Provides dublin bikes station maps and prediction
 
-
-* Free software: MIT license
-* Documentation: https://dublinbikes.readthedocs.io.
+Contributors:
+Harsh Gupta
+Pavinee Kavanagh
+Elena Lanigan
+Ying Huang
 
 
 Features
 --------
 
-* TODO
+This web application was developed to collect dynamic data from the JCDecaux API API and Openweathermap to predict station occupency for Dublin Bikes. The data collection was processed on an AWS EC2 instance and the data was saved to an AWS RDS.
+Users can access current bike station availability at each station, check out the popularoty of a station, and find out how many bikes will be available at that station the following day.
 
 Credits
 -------
