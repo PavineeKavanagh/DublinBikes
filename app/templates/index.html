@@ -12,27 +12,20 @@
                         <h2> How it works</h2>
                     </div>
                     <div class="MapOverTitle">
-                        <div class="Title">
-                        <h3>
-                                          
-                        <i class="fas fa-bicycle"></i>
-                        <br>
-                        Total Bikes: {{tB}}</h3>
-                        </i></div>
-                        <div class="Title">
-                        <h3>
-                        <i class="far fa-flag"></i>
-                        <br>
-                         Total Stations {{tS}}</h3>
-
-
-                        </div>
                         <p class="text">Just Eat dublinbikes stations are distributed throughout the city centre to enable easy access and optimal use. Located in
-                        close proximity to each other, every station has a minimum of 15 stands in situ making it easy to enjoy the service.</p>
+                            close proximity to each other, every station has a minimum of 15 stands in situ making it easy to enjoy the service.</p>
+                        <div class="Title" id="bikeTitle">
+                            <div class="values">
+                                <i class="fas fa-bicycle"></i>
+                            </div>Total Bikes: {{tB}}
+                        </div>
+                        <div class="Title" id="bikeTitle">
+                            <div class="values">
+                                <i class="far fa-flag"></i>
+                            </div>Total Stations {{tS}}
+                        </div>
                     </div>
                 </div>
-
-
             </div>
             <div class="col-sm-6 col-xs-12">
                 <img class="bicycle" src="../static/img/bike.png" alt="bicycle">
@@ -42,74 +35,81 @@
                     <div class="panel-station-heading text-center">
                         <h2> Check the weather</h2>
                     </div>
-
+            
                     <div class="MapOverTitle">
                         {% if mainDesc == 'Rain'%}
                         <div class="Title" id="weatherTitle">
                             <div class="values">
-                                <i class="fas fa-tint" style="color: #4FC3F7"></i>
+                                <i class="fa fa-tint" style="color: #4FC3F7"></i>
                             </div>{{mainDesc}}</div>
                         {% endif %} {% if mainDesc == 'Sun'%}
                         <div class="Title" id="weatherTitle">
                             <div class="values">
-                                <i class="fas fa-sun" style="color: #FFEB3B"></i>
+                                <i class="fa fa-sun" style="color: #FFEB3B"></i>
                             </div>{{mainDesc}}</div>
                         {% endif %} {% if mainDesc == 'Clouds'%}
                         <div class="Title" id="weatherTitle">
                             <div class="values">
-                                <i class="fas fa-cloud" style="color: #4FC3F7"></i>
+                                <i class="fa fa-cloud" style="color: #4FC3F7"></i>
                             </div>{{mainDesc}}</div>
                         {% endif %} {% if mainDesc == 'Snow'%}
                         <div class="Title" id="weatherTitle">
                             <div class="values">
-                                <i class="fas fa-snowflake" style="color: #4FC3F7"></i>
+                                <i class="fa fa-snowflake" style="color: #4FC3F7"></i>
                             </div>{{mainDesc}}</div>
                         {% endif %} {% if mainDesc == 'Extreme'%}
                         <div class="Title" id="weatherTitle">
                             <div class="values">
-                                <i class="fas fa-tint" style="color: #4FC3F7"></i>
+                                <i class="fa fa-tint" style="color: #4FC3F7"></i>
+                            </div>{{mainDesc}}</div>
+                        {% endif %} {% if mainDesc == 'Clear'%}
+                        <div class="Title" id="weatherTitle">
+                            <div class="values">
+                                <i class="fa fa-sun" style="color: #FFEB3B"></i>
                             </div>{{mainDesc}}</div>
                         {% endif %}
                         <div class="mainDetails">
                             <div class="subDetails">
                                 <div class="Num">
-                                    <div class="values" style="font-size:1rem">
+                                    <div class="values">
                                         Temp:
                                     </div>
-                                    <div class="values1" style="font-size:1rem">{{mainTemp}}</div>
+                                    <div class="values1">{{mainTemp}}</div>
                                 </div>
                                 <div class="Num">
-                                    <div class="values" style="font-size:1rem">
+                                    <div class="values">
                                         Rain:
                                     </div>
-                                    <div class="values1" style="font-size:1rem">{{mainRain}}</div>
+                                    <div class="values1">{{mainRain}}</div>
                                 </div>
                             </div>
                             <div class="subDetails">
                                 <div class="Num">
-                                    <div class="values" style="font-size:1rem">
+                                    <div class="values">
                                         Snow:
                                     </div>
-                                    <div class="values1" style="font-size:1rem">{{mainSnow}}</div>
+                                    <div class="values1">{{mainSnow}}</div>
                                 </div>
                                 <div class="Num">
-                                    <div class="values" style="font-size:1rem">
+                                    <div class="values">
                                         Winds:
                                     </div>
-                                    <div class="values1" style="font-size:1rem">{{mainWind}}</div>
+                                    <div class="values1">{{mainWind}}</div>
                                 </div>
                             </div>
                         </div>
-
+            
                     </div>
-
+            
                 </div>
             </div>
         </div>
-
-    <div>  <h1 class="dbText">Station Maps for Dublin Bikes</h1>
-            <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{ url_for('mapsShow') }}">Find Out More</a>
-            </div>
+        <div class="dbText">
+             Station Maps for Dublin Bikes
+        </div>
+        <div>
+            <button type="button" class="btn findMore" onclick="location.href='{{ url_for('mapsShow') }}'">Look for a Bike</button>
+        </div>
     </div>
 
 </body>

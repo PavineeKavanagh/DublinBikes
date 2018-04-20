@@ -10,7 +10,7 @@ import pandas
 # route() decorator tells Flask what URL should trigger our function
 
 
-@app.route('/',methods=['GET','POST'])
+@app.route('/')
 def main():
     print('Initiating Main')
     _stations = Station()  # ------------------------------------- Object for stations
@@ -23,16 +23,17 @@ def main():
     _stations.closeConn()
     print('Connections Closed')
     print(weatherDetails)
-    mainTemp = weatherDetails[0]['temp']
+    mainTemp = str(round(weatherDetails[0]['temp'],2))
     mainDesc = weatherDetails[0]['wDes']
-    mainSnow = weatherDetails[0]['wSnow']
-    mainRain = weatherDetails[0]['wRain']
-    mainWind = weatherDetails[0]['wWind']
+    mainSnow = str(round(weatherDetails[0]['wSnow'], 2))
+    mainRain = str(round(weatherDetails[0]['wRain'], 2))
+    mainWind = str(round(weatherDetails[0]['wWind'], 2))
     coordinates=[]
     totalBikes = statDetails[0]['tBikes']
     totalStations = statDetails[0]['tStations']
     # print('Rendering Template')
     # - Passing the list for Jinja to render
+    print(mainDesc)
     return render_template("index.html",locs=staticStations, tB=totalBikes, tS=totalStations, mainTemp=mainTemp, mainDesc=mainDesc, mainSnow=mainSnow, mainRain=mainRain, mainWind=mainWind)
 
 
