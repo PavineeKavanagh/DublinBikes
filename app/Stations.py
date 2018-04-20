@@ -104,7 +104,8 @@ class Station():
     def getWeather(self):
 
         #Query to get the weather data
-        weatherData = ("select * from owm_live_data limit 1;")
+        weatherData = (
+            "select distinct * from openweathermap_dublin_bikes_dump where weather_date=DATE(NOW()) limit 1")
 
         try:
             # ------Execute on database and return values in self.__cursor
@@ -114,7 +115,8 @@ class Station():
 
         # Creating a list for the returned stations
         for i in self.__cursor:
-            weatherData = dict(temp = float(i[1]), wDes = (i[4]), wSnow = (i[9]), wRain = (i[10]), wWind = (i[7]))
+            print(i)
+            weatherData = dict(temp = float(i[2]), wDes = (i[11]), wSnow = (i[16]), wRain = (i[17]), wWind = (i[14]))
             self.__wDetails.append(weatherData)
         return self.__wDetails
     
